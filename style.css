@@ -81,18 +81,18 @@ button:hover {
 	padding: 5px;
 }
 form{
-	height: 80%
-	width: 10%;
+	/*height: 80%
+	width: 10%; */
 	padding: 30px;
 	margin: 5x auto;
 }
 .textInput{
 	margin-top: 2px;
-	height: 100px;
+	/* height: 100px;
+  width: 50%; */
 	border: 2px solid #5E6E66;
 	font-size: 16px;
 	padding: 1px;
-	width: 50%;
 }
 .input{
 	margin-top: 2px;
@@ -146,3 +146,11 @@ li a:hover:not(.active) {
   text-align: center;
   padding-top: 10px;
 }
+
+#container{width:100%;}
+/* #right{float:right;width:100px;} */
+#left{float:left;width:100px;}
+#center{margin:0 auto;width:100px;} 
+
+
+

@@ -28,16 +28,16 @@ session_start();
 <body>
 <center>
 	<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
+	<h1>Question Creator</h1>
 </center>	
 
-    <div id="container">
+<div id="container">
 
     <!-- left side -->
     <div id="left">	
-	<h1>Create Question</h1>
 
 <form method="get">
-Select Category:
+Category:
 <select name="myCategory">
 	<option value="nada">Please select ...</option>
 	<option value="array">Arrays</option>
@@ -49,7 +49,7 @@ Select Category:
 <br>
 
 
-Select Difficulty:
+Difficulty:
 <select name="myDiff" id="myDiff">
 	<option value="nada">Please select ...</option>
 	<option value="0">Easy</option>
@@ -107,7 +107,7 @@ Select Difficulty:
 ?>
 
 <form method="post">
-Question: <br><textarea name="q_input" style="resize:none;" type="text" class="textInput" placeholder="Enter your question here">
+Question: <br><textarea name="q_input" style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your question here">
 <?php
 if (isset($_GET["myCategory"])){ //== "nada" && $_GET["myDiff"] == "nada") {
 	for ($i=0; $i<sizeof($resultz); $i++){	
@@ -130,6 +130,8 @@ if (isset($_GET["myCategory"])){ //== "nada" && $_GET["myDiff"] == "nada") {
 </form>
 
 <?php //echo $_POST["q_input"]  ?>
+	</div>
+</div>
 
 <?php	
 if (isset($_POST['send_question'])) {
@@ -145,9 +147,9 @@ if (isset($_POST['send_question'])) {
 		);
 		
 		//MID URL
-		//$url = "https://web.njit.edu/~or32/mid.php";
+		$url = "https://web.njit.edu/~or32/beta/midcontrol.php";
 		//$url = "http://192.168.1.136/cs490/midcontrol.php"; //oscar house
-		$url = "http://172.20.10.12/cs490/midcontrol.php"; //myiPhone
+		//$url = "http://172.20.10.12/cs490/midcontrol.php"; //myiPhone
 
 		//initiate cURL
 		$ch = curl_init($url);
@@ -178,9 +180,7 @@ if (isset($_POST['send_question'])) {
 	}
 	
 ?>
-</div>
 
-</div>
 
 </body>
 </html>
