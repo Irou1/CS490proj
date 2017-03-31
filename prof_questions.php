@@ -28,7 +28,13 @@ session_start();
 <body>
 <center>
 	<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
-	<h1>Create Questions</h1>
+</center>	
+
+    <div id="container">
+
+    <!-- left side -->
+    <div id="left">	
+	<h1>Create Question</h1>
 
 <form method="get">
 Select Category:
@@ -52,7 +58,6 @@ Select Difficulty:
 <br>
 <br>
 
-<div id="div1"></div>  <!-- -->
 
 <input type="submit" name="gen_question" value="Generate Question">
 </form>
@@ -67,9 +72,9 @@ Select Difficulty:
 	);
 	
 	//MID URL
-	//$url = "https://web.njit.edu/~or32/mid.php";
+	$url = "https://web.njit.edu/~or32/beta/midcontrol.php";
 	//$url = "http://192.168.1.136/cs490/midcontrol.php"; //oscar house
-	$url = "http://172.20.10.12/cs490/midcontrol.php"; //myiPhone
+	//$url = "http://172.20.10.12/cs490/midcontrol.php"; //myiPhone
 
 
 
@@ -102,7 +107,7 @@ Select Difficulty:
 ?>
 
 <form method="post">
-Question: <br><textarea name="q_input" type="text" class="textInput">
+Question: <br><textarea name="q_input" style="resize:none;" type="text" class="textInput" placeholder="Enter your question here">
 <?php
 if (isset($_GET["myCategory"])){ //== "nada" && $_GET["myDiff"] == "nada") {
 	for ($i=0; $i<sizeof($resultz); $i++){	
@@ -173,6 +178,9 @@ if (isset($_POST['send_question'])) {
 	}
 	
 ?>
-</center>
+</div>
+
+</div>
+
 </body>
 </html>
