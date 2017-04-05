@@ -24,8 +24,9 @@ session_start();
 </head>
 
 <body>
-<center>
-	<h1>Create Test</h1>
+	<center> 
+		<h1>Create Test</h1>
+	</center>
 <?php	
 	//JSON data
 	//$jsonData = array(
@@ -74,18 +75,29 @@ session_start();
 		$j = $i + 1; 
 ?>		
 
+<div id="container">
+	<div id ="left">
+		<form>
+			<!--display questions in read-only text area  -->
+			<center>
+				<h2> Test Question <?php echo $j ?> </h2> 
+				<textarea name = "currentTest" class ="input" rows="7" cols="60" placeholder="Enter test stuff here"></textarea>
+			</center>
+		</form>	
+	</div>
 
-<form>
-	<!--display questions in read-only text area  -->
-	<h2> Question <?php echo $j ?> </h2>
-	<textarea name = "test_questions" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
+	<div id="right">
+		<form>
+			<!--display questions  from question bank in read-only text area  -->
+			<center>
+				<h2> QB Question <?php echo $j ?> </h2>
+				<textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
+			</center>
+		</form>
+	</div>	
+		<?php }  //for loop curly brace?> 
 
-	<!-- Answer Box-->
-	<textarea class ="input" rows="7" cols="60" placeholder="Enter your testcase here"></textarea>
-</form>
-<?php }  //for loop curly brace?> 
-
-
+</div> <!-- div end - container -->
 
 
 

@@ -21,6 +21,26 @@ h2 {
  
 }
 
+h3 {
+  font-family: "Verdana";
+  font-weight: normal;
+  color: white;
+ 
+}
+
+h4 {
+  font-family: "Verdana";
+  font-weight: normal;
+  color: white;
+ 
+}
+
+h5 {
+  font-family: "Verdana";
+  font-weight: normal;
+  color: white;
+ 
+}
 button:hover {
     opacity: 0.8;
     cursor: pointer;
@@ -148,8 +168,8 @@ li a:hover:not(.active) {
 }
 
 #container{width:100%;}
-#left{float:left;width:40%;}
-#right{float:right;width:60%;} 
+#left{float:left;width:50%;}
+#right{float:right;width:50%;} 
 
 
 

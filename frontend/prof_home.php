@@ -53,7 +53,7 @@ session_start();
 
 <form>
 	<br>
-	<input type="button" value="Create Questions" class="btn btn-hover btn-block btn-primary" onclick="window.location.href='prof_questions.php'" />
+	<input type="button" value="Create Questions" class="btn btn-hover btn-block btn-primary" onclick="window.location.href='prof_qbank.php'" />
 	<input type="button" value="Create Test" class="btn btn-hover btn-block btn-primary" onclick="window.location.href='prof_create_test.php'" />
 	<input type="button" value="View Test" class="btn btn-hover btn-block btn-primary" onclick="window.location.href='prof_view_test.php'" />
 	<br></br>

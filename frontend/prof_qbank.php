@@ -44,58 +44,59 @@ session_start();
 </center>	
 
 <div id="container">
+	<!-- <center>-->
 
-    <!-- left side -->
-    <div id="left">	
+	    <!-- left side -->
+	    <div id="left">	
+		
+		<form method="post">
+		
+		<h3>Category:</h3><select name="myCategory" id="myCategory">
+			<option value="nada">Please select ...</option>
+			<option value="array">Arrays</option>
+			<option value="loop">Loops</option>
+			<option value="method">Methods</option>
+			<option value="statement">Statements</option>
+		</select>
+		<br>
+		<br>
 
-	<form method="post">
-	Category:
-	<select name="myCategory" id="myCategory">
-		<option value="nada">Please select ...</option>
-		<option value="array">Arrays</option>
-		<option value="loop">Loops</option>
-		<option value="method">Methods</option>
-		<option value="statement">Statements</option>
-	</select>
-	<br>
-	<br>
-
-
-	Difficulty:
-	<select name="myDiff" id="myDiff">
-		<option value="nada">Please select ...</option>
-		<option value="0">Easy</option>
-		<option value="1">Medium</option>
-	</select>
-	<br>
-	<br>
+		<h3> Difficulty:</h3><select name="myDiff" id="myDiff">
+			<option value="nada">Please select ...</option>
+			<option value="0">Easy</option>
+			<option value="1">Medium</option>
+		</select>
+		<br>
+		<br>
 
 
-<!-- <form method="post"> -->
-Question: <br><textarea name="q_input" style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your question here">
-<?php
-if (isset($_POST["myCategory"])){ //== "nada" && $_GET["myDiff"] == "nada") {
-	for ($i=0; $i<sizeof($resultz); $i++){	
-		if ($resultz[$i]['category'] == $_POST["myCategory"]){
-			//echo $userInputCategory;
-			if($resultz[$i]['difficulty'] == $_POST["myDiff"]){
-				//echo $userInputDif;
-				echo $resultz[$i]['text'];
+	<!-- <form method="post"> -->
+	<h3>Question:</h3><br>
+<textarea name="q_input" style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your question here">
+	<?php
+	if (isset($_POST["myCategory"])){ //== "nada" && $_GET["myDiff"] == "nada") {
+		for ($i=0; $i<sizeof($resultz); $i++){	
+			if ($resultz[$i]['category'] == $_POST["myCategory"]){
+				//echo $userInputCategory;
+				if($resultz[$i]['difficulty'] == $_POST["myDiff"]){
+					//echo $userInputDif;
+					echo $resultz[$i]['text'];
+				}
 			}
 		}
 	}
-}
-	//$_POST["q_input"] send this to oscar
-?>
-</textarea> 
-<br>
-<br>
-<input type="submit" name="send_question" value="Submit">
-<input type="reset">
-</form>
+		//$_POST["q_input"] send this to oscar
+	?>
+	</textarea> 
+	<br>
+	<br>
+	<input type="reset" class="btn btn-block btn-red-primary">
+	<input type="submit" name="send_question" value="Submit" class="btn btn-hover btn-block btn-green-primary" >
+	</form>
 
-<?php //echo $_POST["q_input"]  ?>
-	</div>
+	<?php //echo $_POST["q_input"]  ?>
+		</div>
+	<!--</center> -->
 </div>
 
 
