@@ -29,8 +29,10 @@ session_start();
 <center>
       <div>
          <?php
+
 	    //GET all current test's questions
-	    $exam = 'testhello'; //$_GET['selectedExam'];
+	    //$exam = 'testhello'; 
+       $exam = $_GET['exam'];
 	    //$questions = array("one", "two", "three");
 	    $examData = array('exam'=>$exam);
 
@@ -43,18 +45,21 @@ session_start();
             curl_close($ch);
             
          ?>
-         <p>Currently taking test:  <?php echo $exam; ?></p>
+         <h2>Currently taking test:  <?php echo $exam; ?></h2>
          <form method="post" action="submitTest.php"> 
 	    <br>
 	    <?php
                foreach(json_decode($questions) as $question){
-		     echo "<h2>$question</h2>
-                        <textarea type='text' name='answer' placeholder='Enter your answer'></textarea>
+      		       echo "<h4>$question</h4>"; 
+                 ?>
+    
+         <textarea id="studentAnsInput" class ="input" rows="7" cols="60" placeholder="Enter your answer here" name="studentAnsInput"> </textarea>
 			<br>
 			
-			<br>";
+			<br>
+         <?php 
 	       }   
-	    ?>
+	       ?>
 	    <br>
        <br>
             <input type="submit" value="Submit Test for Grading" class="btn btn-hover btn-block btn-primary">

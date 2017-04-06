@@ -24,7 +24,8 @@ session_start();
 <?php
 
    //redirect to test page
-   $selectedExam = $_POST['selectedExam'];
+   $selectedExam = $_POST['testList'][0];
+
   
    if($selectedExam){ 
       header("Location: https://web.njit.edu/~ka279/cs490/rc/student_test_page.php?exam=$selectedExam");
