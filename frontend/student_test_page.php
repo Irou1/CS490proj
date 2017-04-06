@@ -28,16 +28,15 @@ session_start();
 <body>
 <center>
       <div>
-         <?php
+      <?php
 
 	    //GET all current test's questions
-	    //$exam = 'testhello'; 
-       $exam = $_GET['exam'];
-	    //$questions = array("one", "two", "three");
-	    $examData = array('exam'=>$exam);
+        $exam = $_GET['exam'];  //$exam = 'someTest'; 
+	    $examData = array('exam'=>$exam);  //$questions = array("one", "two", "three");
 
-	    $url = "https://web.njit.edu/~em244/CS490/Model/getTestQuestions.php";
-	    $ch = curl_init($url);
+      $url = "https://web.njit.edu/~or32/rc/receiveonetest.php";
+	  
+      $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $examData);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -53,7 +52,7 @@ session_start();
       		       echo "<h4>$question</h4>"; 
                  ?>
     
-         <textarea id="studentAnsInput" class ="input" rows="7" cols="60" placeholder="Enter your answer here" name="studentAnsInput"> </textarea>
+         <textarea id="studentAnsInput" class ="input" rows="7" cols="60" placeholder="Enter your answer here" name="studentAnsInput[]"> </textarea>
 			<br>
 			
 			<br>

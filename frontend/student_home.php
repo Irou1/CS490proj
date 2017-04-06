@@ -64,7 +64,7 @@ session_start();
     <form method="post" action="/~ka279/cs490/rc/student_take_test.php"> 
        <?php
        foreach(json_decode($tests) as $test){
-       	echo "<input type='checkbox' name=testList[]' value='$test'>$test <br>";
+       	echo "<input type='checkbox' name=testList[]' value='$test'>$test <br>"; //Test - check box
           }
        ?>
            <br> 
