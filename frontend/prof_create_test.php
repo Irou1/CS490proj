@@ -30,7 +30,7 @@ session_start();
 <?php	
 
 	//MID URL
-	$url = "https://web.njit.edu/~or32/rc/receivetasks.php";
+	$url = "https://web.njit.edu/~or32/rc/receivealltasks.php";
 
 	//initiate cURL
 	$ch = curl_init($url);
