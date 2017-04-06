@@ -50,10 +50,6 @@ session_start();
 	
 	//MID URL
 	$url = "https://web.njit.edu/~or32/beta/midcontrol.php";
-	//$url = "http://192.168.1.136/cs490/midcontrol.php"; //oscar house
-	//$url = "http://172.20.10.12/cs490/midcontrol.php"; //myiPhone
-
-
 
 	//initiate cURL
 	$ch = curl_init($url);

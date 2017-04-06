@@ -51,6 +51,7 @@ session_start();
 		
 		<form method="post">
 		
+		<!-- Catagory options -->
 		<h3>Category:</h3><select name="myCategory" id="myCategory">
 			<option value="nada">Please select ...</option>
 			<option value="array">Arrays</option>
@@ -60,7 +61,8 @@ session_start();
 		</select>
 		<br>
 		<br>
-
+		
+		<!-- Diff options -->
 		<h3> Difficulty:</h3><select name="myDiff" id="myDiff">
 			<option value="nada">Please select ...</option>
 			<option value="0">Easy</option>
@@ -69,25 +71,46 @@ session_start();
 		<br>
 		<br>
 
+		<!-- Return type options -->
+		<h3> Return Type:</h3><select name="myRtype" id="myRtype">
+			<option value="nada">Please select ...</option>
+			<option value="int">Int</option>
+			<option value="double">Double</option>
+			<option value="float">Float</option>
+			<option value="char">Char</option>
+			<option value="string">String</option>
+		</select>
+		<br>
+		<br>
 
-	<!-- <form method="post"> -->
-	<h3>Question:</h3><br>
-<textarea name="q_input" style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your question here">
-	<?php
-	if (isset($_POST["myCategory"])){ //== "nada" && $_GET["myDiff"] == "nada") {
-		for ($i=0; $i<sizeof($resultz); $i++){	
-			if ($resultz[$i]['category'] == $_POST["myCategory"]){
-				//echo $userInputCategory;
-				if($resultz[$i]['difficulty'] == $_POST["myDiff"]){
-					//echo $userInputDif;
-					echo $resultz[$i]['text'];
-				}
-			}
-		}
-	}
-		//$_POST["q_input"] send this to oscar
-	?>
-	</textarea> 
+		<!-- MethodName - form input -->
+		<h3> Method Name: Fill in if required</h3>
+		<input type="text" placeholder="Some Method Name" name="methodname_input" class="methodInput"></td><br><br>
+
+		<!--Arg Names -->
+		<h3> Argument Names (separated by a comma)</h3>
+		<input type="text" placeholder="Arg1, Arg2" name="arg_input" ></td>
+		<br><br>		
+
+		<!--Arg Type -->
+		<h3> Argument Types (separated by a comma)</h3>
+		<input type="text" placeholder="Arg1Type, Arg2Type" name="argt_input" ></td>
+		<br><br>					
+		
+		<!-- Question - Input -->
+		<h3>Question:</h3><br>
+		<textarea name="q_input" style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your Question Here"></textarea>
+		<br>
+
+		<!-- Test Case  <h3>Test Case:</h3><br> -->
+		<textarea name="tc_input" style="resize:none;" rows="7" cols="20" type="text" class="textInput" placeholder="Test Case Here"></textarea>
+
+
+		<!-- Test Case Answer -->
+		<textarea name="tcAns_input" style="resize:none;" rows="7" cols="20" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
+		<br>	
+
+
 	<br>
 	<br>
 	<input type="reset" class="btn btn-block btn-red-primary">
@@ -107,18 +130,20 @@ session_start();
 	//function php_curl(){
 		//JSON data
 		$jsonData = array(
-		'flag' => 'task',
-		'mode' => 'checktask',
 		'prof' => $_SESSION['p_ucid'],
 		'cat' => $_POST["myCategory"],
 		'diff' => $_POST["myDiff"],
-		'quest' => $_POST["q_input"] 
+		'quest' => $_POST["q_input"],
+		'returnType' => $_POST["myRtype"],
+		'methodName' => $_POST["methodname_input"],
+		'argName' => $_POST["arg_input"], 
+		'argType' => $_POST["argt_input"],
+		'testCase' => $_POST["tc_input"],
+		'tcAns' => $_POST["tcAns_input"]
 		);
 		
 		//MID URL
-		$url = "https://web.njit.edu/~or32/beta/midcontrol.php";
-		//$url = "http://192.168.1.136/cs490/midcontrol.php"; //oscar house
-		//$url = "http://172.20.10.12/cs490/midcontrol.php"; //myiPhone
+		$url = "https://web.njit.edu/~or32/rc/sendtask.php";
 
 		//initiate cURL
 		$ch = curl_init($url);
@@ -143,9 +168,9 @@ session_start();
 		$resultz = json_decode($result, 1);	//json decode
 
 		//display resultz - json array
-		print('<pre>');
-		print_r ($resultz);
-		print('</pre>');
+		//print('<pre>');
+		//print_r ($resultz);
+		//print('</pre>');
 	}
 	
 ?>

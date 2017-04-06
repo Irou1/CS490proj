@@ -28,28 +28,12 @@ session_start();
 		<h1>Create Test</h1>
 	</center>
 <?php	
-	//JSON data
-	//$jsonData = array(
-	//'flag' => 'test',
-	//'mode' => 'view'
-	//);
-	
+
 	//MID URL
 	$url = "https://web.njit.edu/~or32/rc/receivetasks.php";
-	//$url = "https://web.njit.edu/~or32/beta/midcontrol.php";
-	//$url = "http://192.168.1.136/cs490/midcontrol.php"; //oscar house
-	//$url = "http://172.20.10.12/cs490/midcontrol.php"; //myiPhone
-
-
 
 	//initiate cURL
 	$ch = curl_init($url);
-	
-	//Tell cURL that we want to send a POST request
-	//curl_setopt($ch, CURLOPT_POST, true);
-	
-	//Attach our encoded JSON string to the POST fields
-	//curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
 	
 	//returns $url stuff
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
