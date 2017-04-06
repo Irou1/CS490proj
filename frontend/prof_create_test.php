@@ -26,6 +26,16 @@ session_start();
 <body>
 	<center> 
 		<h1>Create Test</h1>
+		<form method = "post">
+		<input type="text" name="examName" placeholder="Enter a new Test Name" class="textInput">
+		<!-- Test options 
+		<h3> Select Test:</h3><select name="myTest" id="myTest">
+			<option value="nada">Please select ...</option>
+			<option value="0">Test1</option>
+			<option value="1">Test2</option>
+		</select>
+		-->
+
 	</center>
 <?php	
 
@@ -61,7 +71,6 @@ session_start();
 
 <div id="container">
 	<div id ="left">
-		<form>
 			<!--display questions in read-only text area  -->
 			<center>
 				<h2> Test Question <?php echo $j ?> </h2> 
@@ -71,8 +80,7 @@ session_start();
 	</div>
 
 	<div id="right">
-		<form>
-			<!--display questions  from question bank in read-only text area  -->
+		<form> <!-- form - display questions  from question bank in read-only text area  -->
 			<center>
 				<h2> QB Question <?php echo $j ?> </h2>
 				<textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
