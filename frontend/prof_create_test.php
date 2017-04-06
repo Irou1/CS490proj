@@ -89,11 +89,7 @@ session_start();
 			<textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
 
 			<br>
-
 			<?php }  //for loop - curly brace?> 
-
-
-
 
 <?php	
 //Add Test questions to X Test aka Create Test
