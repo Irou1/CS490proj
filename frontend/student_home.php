@@ -53,14 +53,13 @@ session_start();
 
     <div id="topbox">
     <h3>Take a Test</h3>
-    <button type="button" onclick="showTestDiv()">Take a Test</button>
-    <h3>See Previous results</h3>
-    <button type="button" onclick="showGradeDiv()">See current
-    grades</button>
+    <button type="button" class="btn btn-hover btn-block btn-primary" onclick="showTestDiv()">Take a Test</button>
+    <h4>See Previous results</h4>
+    <button type="button" class="btn btn-hover btn-block btn-green-primary" onclick="showGradeDiv()">See current grades</button>
  </div>
 
     <div id="availableTests" style="display:none;">
-    <p>List of Tests</p>
+    <h3>List of Tests</h3>
     <form method="post" action="/~ka279/cs490/rc/student_take_test.php"> 
        <?php
        foreach(json_decode($tests) as $test){
@@ -68,7 +67,7 @@ session_start();
           }
        ?>
            <br> 
-       <input type="submit" name="selectedExam" value="Start Testing">
+       <input type="submit" class="btn btn-hover btn-block btn-primary" name="selectedExam" value="Start Testing">
     </form>
      </div>
 
