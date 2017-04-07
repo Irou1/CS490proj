@@ -44,15 +44,21 @@ session_start();
             curl_close($ch);
             
          ?>
+
+
          <h2>Currently taking test:  <?php echo $exam; ?></h2>
          <form method="post" action="submitTest.php"> 
 	    <br>
-	    <?php
+	    <?php 
+                $i=1;
                foreach(json_decode($questions) as $question){
+                 echo "<h2>Question $i</h2>";
       		       echo "<h4>$question</h4>"; 
-                 ?>
+
+                 $i = $i + 1;
+      ?>
     
-         <textarea id="studentAnsInput" class ="input" rows="7" cols="60" placeholder="Enter your answer here" name="studentAnsInput[]"> </textarea>
+         <textarea id="studentAnsInput" class ="input" placeholder="Enter your answer here" rows="7" cols="60"  name="studentAnsInput[]"></textarea>
 			<br>
 			
 			<br>
@@ -61,7 +67,7 @@ session_start();
 	       ?>
 	    <br>
        <br>
-            <input type="submit" value="Submit Test for Grading" class="btn btn-hover btn-block btn-primary">
+            <input type="submit" value="Submit Test" class="btn btn-hover btn-block btn-red-primary">
          </form>
       </div>
    </center>  
