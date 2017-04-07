@@ -67,18 +67,18 @@ session_start();
        	//echo $test;
        	//echo "<div style ='font:11px/21px Arial,tahoma,sans-serif;color:#ff0000'> $test</div>";
        	echo "<p>";
-       	echo "<input type='checkbox' name=testList[]' value='$test'>"; //Test - check box
+       	echo "<input type='radio' name=testList[]' value='$test'>"; //Test - radio button
        	echo "<font color=DarkBlue>$test</font>";
        	echo "</p>";
           }
        ?>         
         <br> 
-       <input type="submit" class="btn btn-hover btn-block btn-primary" name="selectedExam" value="Start Testing">
+       <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedExam" value="Start Testing">
     </form>
      </div>
 
 
 
-</center>
+</center> 
 </body>
 </html>

@@ -85,6 +85,7 @@ session_start();
 	<form> <!-- form - display questions  from question bank in read-only text area  -->
 		<center>
 			<h2> QB Question <?php echo $j ?> </h2>
+
 			<input type='checkbox' name='questionList[]' value="<?php echo $resultz[$i]; ?>"> 
 			<textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
 

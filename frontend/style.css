@@ -91,6 +91,14 @@ button:hover {
   border-radius: 2px;
   border: 0;
 }
+.btn-orange-primary {
+  background-color: #ff6600;
+  color: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: 0 0 rgba(0, 0, 0, 0);
+  border-radius: 2px;
+  border: 0;
+}
 
 .header{
 	background-color: #003380;
@@ -170,7 +178,5 @@ li a:hover:not(.active) {
 #container{width:100%;}
 #left{float:left;width:50%;}
 #right{float:right;width:50%;} 
-
-
 
 
