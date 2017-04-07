@@ -59,14 +59,20 @@ session_start();
  </div>
 
     <div id="availableTests" style="display:none;">
-    <h3>List of Tests</h3>
+    
     <form method="post" action="/~ka279/cs490/rc/student_take_test.php"> 
+    	<h3>List of Tests</h3>
        <?php
        foreach(json_decode($tests) as $test){
-       	echo "<input type='checkbox' name=testList[]' value='$test'>$test <br>"; //Test - check box
+       	//echo $test;
+       	//echo "<div style ='font:11px/21px Arial,tahoma,sans-serif;color:#ff0000'> $test</div>";
+       	echo "<p>";
+       	echo "<input type='checkbox' name=testList[]' value='$test'>"; //Test - check box
+       	echo "<font color=DarkBlue>$test</font>";
+       	echo "</p>";
           }
-       ?>
-           <br> 
+       ?>         
+        <br> 
        <input type="submit" class="btn btn-hover btn-block btn-primary" name="selectedExam" value="Start Testing">
     </form>
      </div>
