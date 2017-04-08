@@ -18,46 +18,28 @@ session_start();
 
 <?php
 //if (isset($_POST['submit_student_answers_button'])) {
-	print_r($_POST);
-	echo "<br>";
-	//comment
-	$x=0;
-	$aaa=array($_POST['studentAnsInput']); //student answers
-    //print_r($aaa);
-	
 
 	//JSON data
 	$jsonData = array(
 	'sName' => $_SESSION['s_ucid'],
 	'testName' => $_SESSION['examName']
-	//'sAnswers' => $_POST['studentAnsInput']
 
-	//'sAnswers' => $_POST['sAnswers']
-	//'tn' => $_POST['studentAnsInput']
-	//'tn' => $_POST
 	);
-    print_r($aaa);
-    echo "<br>";
-	foreach($_POST['studentAnsInput'] as $value){
-		//$ans=$value;
-		//array_push($jsonData, array('sAnswers'[$x] => $ans));
-		$jsonData[$x] = $value;
-		$x++;
 
+	//Student Answers
+	$x=0;
+	foreach($_POST['studentAnsInput'] as $value){
+
+		$jsonData[$x] = $value;		 //BEST
+		$x++;
 	}
 	
-	print_r($jsonData);
-    echo "<br>";
-	//testing
-	//print('<pre>');
-	//print_r($_POST['studentAnsInput']);
-	//print_r($_POST);
-	//print_r($_SESSION);
-	//print('<pre>');
+	//print_r($jsonData); 		//Testing - printing all jsonData****
+    //echo "<br>";
 
 	//MID URL
-	//$url = "https://web.njit.edu/~or32/rc/sendstudentanswers.php";
-	$url = "https://web.njit.edu/~em244/CS490/Model/getGradedAnswers.php";
+	$url = "https://web.njit.edu/~or32/rc/sendstudentanswers.php";
+	//$url = "https://web.njit.edu/~em244/CS490/Model/getGradedAnswers.php";
 
 	//initiate cURL
 	$ch = curl_init($url);
@@ -79,7 +61,7 @@ session_start();
 	
 	//echo gettype ( $result );		//get var type 
 
-	echo $result;
+	//echo $result; 				//testing - echo middle 
 
 	$resultz = json_decode($result, 1);	//json decode
 
