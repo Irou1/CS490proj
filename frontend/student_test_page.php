@@ -31,7 +31,8 @@ session_start();
       <?php
 
 	    //GET all current test's questions
-        $exam = $_GET['exam'];  //$exam = 'someTest'; 
+      $exam = $_GET['exam'];  //$exam = 'someTest'; 
+      $_SESSION['examName'] = $_GET['exam']; 
 	    $examData = array('exam'=>$exam);  //$questions = array("one", "two", "three");
 
       $url = "https://web.njit.edu/~or32/rc/receiveonetest.php";
@@ -47,29 +48,42 @@ session_start();
 
 
          <h2>Currently taking test:  <?php echo $exam; ?></h2>
-         <form method="post" action="submitTest.php"> 
+         <form method="post" action="student_submit_action.php"> 
 	    <br>
 	    <?php 
+
                 $i=1;
+                $studentAnsArr = array(); //testing
                foreach(json_decode($questions) as $question){
                  echo "<h2>Question $i</h2>";
       		       echo "<h4>$question</h4>"; 
 
                  $i = $i + 1;
+                 
       ?>
     
-         <textarea id="studentAnsInput" class ="input" placeholder="Enter your answer here" rows="7" cols="60"  name="studentAnsInput[]"></textarea>
+        <textarea id="studentAnsInput" class ="input" placeholder="Enter your answer here" rows="7" cols="60"  name="studentAnsInput[]"></textarea> 
+        <?php 
+          $sAnswers = $_POST['studentAnsInput'];
+          $_SESSION['sAns'] = $sAnswers;
+        ?>
+             
 			<br>
 			
 			<br>
          <?php 
-	       }   
+	       }   //curly - foreach...
+
 	       ?>
 	    <br>
        <br>
-            <input type="submit" value="Submit Test" class="btn btn-hover btn-block btn-red-primary">
+            <input type="submit" name="submit_student_answers_button" value="Submit Test" class="btn btn-hover btn-block btn-red-primary">
          </form>
       </div>
+
    </center>  
+
+
+
    </body>
 </html>
