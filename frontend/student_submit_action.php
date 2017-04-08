@@ -11,10 +11,29 @@ Send to Middle
 3) Student Answers (in array)
  -->
 
-<?php
+ <?php
 //start session
 session_start();
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CS490 Student Home Page</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<ul>
+  <li><a class="active" href="student_home.php">Home</a></li>
+  <li style="float:right"><a href="logout.php">LogOut</a></li>
+</ul>
+</head>
+
+<body>
+<center>
+<h1>Thank You <?php echo ucfirst($_SESSION['s_ucid']) ?>  for Submitting Test</h1>
+
+
+
 
 <?php
 //if (isset($_POST['submit_student_answers_button'])) {
@@ -75,3 +94,8 @@ session_start();
 //} 
 
 ?>
+
+
+</center> 
+</body>
+</html>
