@@ -50,15 +50,11 @@ session_start();
 	);
 
 	//Student Answers
-
-	$studentData=array();
 	foreach($_POST['studentAnsInput'] as $value){
-		array_push($studentData, $value);
+		array_push($jsonData, $value);		//push $value to jsonData Array
 		
 	}
-	
-	array_push($jsonData, $studentData);	//push studentData to jsonData
-	
+
 	//print_r($jsonData); 		//Testing - printing all jsonData****
     //echo "<br>";
 	
@@ -87,7 +83,7 @@ session_start();
 	
 	//echo gettype ( $result );		//get var type 
 
-	//echo $result; 				//testing - echo middle 
+	echo $result; 				//testing - echo middle 
 
 	$resultz = json_decode($result, 1);	//json decode
 
