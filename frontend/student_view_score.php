@@ -7,6 +7,9 @@ Student - View Score
  -->
 
  <?php
+//show errors
+include 'showerrors.php';
+ 
 //start session
 session_start();
  ?>

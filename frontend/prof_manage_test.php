@@ -3,37 +3,37 @@ Kenneth Aparicio
 Front End
 CS490
 
-Student - [Home]
--->
+Prof -> Home -> [Manage Test] 
+ -->
 
- <?php
+<?php
 //show errors
 include 'showerrors.php';
 
 //start session
 session_start();
-
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>CS490 Student Home Page</title>
+	<title>CS490 Prof Logged In</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="studentscript.js"></script>
+  <script src="profscript.js"></script>
 <ul>
-  <li><a class="active" href="student_home.php">Home</a></li>
+  <li><a class="active" href="prof_home.php">Home</a></li>
   <li style="float:right"><a href="logout.php">LogOut</a></li>
 </ul>
 </head>
+
 
 <?php
 	//MID URL - get Test Names
 	$url = "https://web.njit.edu/~or32/rc/receivealltests.php";
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_POST, true);
-	//curl_setopt($ch, CURLOPT_POSTFIELDS, $DATA);
+//	curl_setopt($ch, CURLOPT_POSTFIELDS, $DATA);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$tests = curl_exec($ch);
     curl_close($ch);
@@ -41,11 +41,11 @@ session_start();
 
 <body>
 <center>
-	<h1>Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1>
+	<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
 	
 	<?php	
 	//if session student ucid is set, it's true -> you are logged in
-	if (isset($_SESSION['s_ucid'])) {
+	if (isset($_SESSION['p_ucid'])) {
 		//echo "You have successfully logged in Student!"; 
 	}else {
 		//redirects to kfront page ...if not logged in
@@ -56,15 +56,15 @@ session_start();
   <div id="wrapper">
 
     <div id="topbox">
-    <h3>Take a Test</h3>
-    <button type="button" class="btn btn-hover btn-block btn-primary" onclick="showTestDiv()">Take a Test</button>
+    <h3>Edit a Test</h3>
+    <button type="button" class="btn btn-hover btn-block btn-primary" onclick="showTestDiv()">Choose a Test to Edit</button>
     <h4>See Previous results</h4>
     <button type="button" class="btn btn-hover btn-block btn-green-primary" onclick="showGradeDiv()">See current grades</button>
  </div>
 
     <div id="availableTests" style="display:none;">
     
-    <form method="post" action="/~ka279/cs490/rc/student_take_test.php"> 
+    <form method="post" action="/~ka279/cs490/rc/prof_edit_test.php"> 
     	<h3>List of Tests</h3>
        <?php
        foreach(json_decode($tests) as $test){
@@ -77,12 +77,17 @@ session_start();
           }
        ?>         
         <br> 
-       <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedExam" value="Start Testing">
+       <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedExam" value="Edit">
     </form>
      </div>
 
 
+<body>
+<center>
 
-</center> 
+
+
+
+</center>
 </body>
 </html>

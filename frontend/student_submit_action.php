@@ -3,7 +3,7 @@ Kenneth Aparicio
 Front End
 CS490
 
-Student -> Test Page -> click submit test
+Student -> Home -> Take Test -> Test Page -> [click submit test]
 
 Send to Middle
 1) Student Name
@@ -12,6 +12,9 @@ Send to Middle
  -->
 
  <?php
+//show errors
+include 'showerrors.php';
+ 
 //start session
 session_start();
 ?>
@@ -30,7 +33,8 @@ session_start();
 
 <body>
 <center>
-<h1>Thank You <?php echo ucfirst($_SESSION['s_ucid']) ?>  for Submitting Test</h1>
+<h1>Test Submitted </h1>
+<h1>Thank You <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1>
 
 
 
@@ -53,9 +57,11 @@ session_start();
 		$x++;
 	}
 	
-	//print_r($jsonData); 		//Testing - printing all jsonData****
-    //echo "<br>";
-
+	/*
+	print_r($jsonData); 		//Testing - printing all jsonData****
+    echo "<br>";
+	*/
+	
 	//MID URL
 	$url = "https://web.njit.edu/~or32/rc/sendstudentanswers.php";
 	//$url = "https://web.njit.edu/~em244/CS490/Model/getGradedAnswers.php";
@@ -85,13 +91,10 @@ session_start();
 	$resultz = json_decode($result, 1);	//json decode
 
 	//display resultz - json array
-	/*print('<pre>');
-	print_r ($resultz);
-	print('</pre>');
-	*/
-
-
-//} 
+	//print('<pre>');
+	//print_r ($resultz);
+	//print('</pre>');
+	
 
 ?>
 

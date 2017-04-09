@@ -3,7 +3,7 @@ Kenneth Aparicio
 Front End
 CS490
 
-Student -> Home -> Take Test -> [Test Page] 
+Prof -> Home -> Manage Test -> Edit Test -> [Actual Test] 
  -->
 
  <?php
@@ -20,10 +20,10 @@ session_start();
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <title>CS490 Student Test Page</title>
+   <title>CS490 Prof Edit Test Page</title>
    <link rel="stylesheet" type="text/css" href="style.css">
 <ul>
-  <li><a class="active" href="student_home.php">Home</a></li>
+  <li><a class="active" href="prof_home.php">Home</a></li>
   <li style="float:right"><a href="logout.php">LogOut</a></li>
 </ul>
 </head>
@@ -67,6 +67,7 @@ session_start();
       ?>
     
         <textarea id="studentAnsInput" class ="input" placeholder="Enter your answer here" rows="7" cols="60"  name="studentAnsInput['<?php echo $question; ?>']"></textarea>
+
         <?php 
 
         ?>
@@ -80,7 +81,8 @@ session_start();
 	       ?>
 	    <br>
        <br>
-            <input type="submit" name="submit_student_answers_button" value="Submit Test" class="btn btn-hover btn-block btn-red-primary">
+            <!-- <input type="submit" name="submit_student_answers_button" value="Submit Test" class="btn btn-hover btn-block btn-red-primary">
+            -->
          </form>
       </div>
 

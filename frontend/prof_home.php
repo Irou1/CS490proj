@@ -7,6 +7,9 @@ Prof - Home Page
  -->
 
 <?php
+//show errors
+include 'showerrors.php';
+
 //start session
 session_start();
 ?>
@@ -55,7 +58,7 @@ session_start();
 	<br>
 	<input type="button" value="Create Questions" class="btn btn-hover btn-block btn-primary" onclick="window.location.href='prof_qbank.php'" />
 	<input type="button" value="Create Test" class="btn btn-hover btn-block btn-primary" onclick="window.location.href='prof_create_test.php'" />
-	<input type="button" value="View Test" class="btn btn-hover btn-block btn-primary" onclick="window.location.href='prof_view_test.php'" />
+	<input type="button" value="Manage Tests" class="btn btn-hover btn-block btn-primary" onclick="window.location.href='prof_manage_test.php'" />
 	<br></br>
 	<input type="button" value="Grade Test" class="btn btn-hover btn-block btn-green-primary" onclick="window.location.href='prof_grade_test.php'" />
 	<input type="button" value="Publish Scores" class="btn btn-hover btn-block btn-green-primary" onclick="window.location.href='prof_post_results.php'" />

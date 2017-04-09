@@ -3,10 +3,13 @@ Kenneth Aparicio
 Front End
 CS490
 
-Student - Submit Test
+Student -> Home -> Take Test-> Test Page -> click submit test -> [Submit Test Successfully]
  -->
 
  <?php
+//show errors
+include 'showerrors.php';
+ 
 //start session
 session_start();
  ?>
