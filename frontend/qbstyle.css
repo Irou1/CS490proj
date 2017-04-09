@@ -1,6 +1,4 @@
 body{
-	  padding: 0px;
-	  margin: 0px;
 	  background-image: url('aw.jpg');
 	  background-repeat: no-repeat;
       background-attachment: fixed;
@@ -108,12 +106,7 @@ button:hover {
 	width:100%;
 	padding: 5px;
 }
-form{
-	/*height: 80%
-	width: 10%; */
-	padding: 30px;
-	margin: 5x auto;
-}
+
 .textInput{
 	margin-top: 2px;
 	/* height: 100px;
@@ -174,8 +167,4 @@ li a:hover:not(.active) {
   text-align: center;
   padding-top: 10px;
 }
-
-#container{width:100%;}
-#left{float:left;width:50%;}
-#right{float:right;width:50%;} 
 

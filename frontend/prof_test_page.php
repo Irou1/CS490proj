@@ -51,7 +51,7 @@ session_start();
          ?>
 
 
-         <h2>Currently taking test:  <?php echo $exam; ?></h2>
+         <h2>Currently editing test:  <?php echo $exam; ?></h2>
          <form method="post" action="student_submit_action.php"> 
 	    <br>
 	    <?php 

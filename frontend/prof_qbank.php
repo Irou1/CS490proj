@@ -21,7 +21,7 @@ session_start();
 <head>
 	<meta charset="UTF-8">
 	<title>CS490 Prof Logged In</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="qbstyle.css">
 
 
 <ul>
@@ -44,86 +44,96 @@ session_start();
 <center>
 	<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
 	<h1>Question Creator</h1>
-</center>	
 
-<div id="container">
-	<!-- <center>-->
 
-	    <!-- left side -->
-	    <div id="left">	
+<form method="post">
 		
-		<form method="post">
-		
-		<!-- Catagory options -->
-		<h3>Category:</h3><select name="myCategory" id="myCategory">
-			<option value="nada">Please select ...</option>
-			<option value="array">Arrays</option>
-			<option value="loop">Loops</option>
-			<option value="method">Methods</option>
-			<option value="statement">Statements</option>
-		</select>
-		<br>
-		<br>
-		
-		<!-- Diff options -->
-		<h3> Difficulty:</h3><select name="myDiff" id="myDiff">
-			<option value="nada">Please select ...</option>
-			<option value="0">Easy</option>
-			<option value="1">Medium</option>
-		</select>
-		<br>
-		<br>
+	<!-- Catagory options -->
+	<font color="white" size="3" face="verdana">Category:</font>
+		<select name="myCategory" id="myCategory">
+		<option value="nada">Please select ...</option>
+		<option value="array">Arrays</option>
+		<option value="loop">Loops</option>
+		<option value="method">Methods</option>
+		<option value="statement">Statements</option>
+	</select>
 
-		<!-- Return type options -->
-		<h3> Return Type:</h3><select name="myRtype" id="myRtype">
-			<option value="nada">Please select ...</option>
-			<option value="int">Int</option>
-			<option value="double">Double</option>
-			<option value="float">Float</option>
-			<option value="char">Char</option>
-			<option value="string">String</option>
-		</select>
-		<br>
-		<br>
+	
+	<!-- Diff options -->
+	<font color="white" size="3" face="verdana">&emsp; Difficulty:</font>   <!-- tab space is &emsp; -->
+		<select name="myDiff" id="myDiff">
+		<option value="nada">Please select ...</option>
+		<option value="0">Easy</option>
+		<option value="1">Medium</option>
+	</select>
 
-		<!-- MethodName - form input -->
-		<h3> Method Name: Fill in if required</h3>
-		<input type="text" placeholder="Some Method Name" name="methodname_input" class="methodInput"></td><br><br>
+	<!-- Return type options -->
+	<font color="white" size="3" face="verdana"> Return Type:</font>
+	<select name="myRtype" id="myRtype">
+		<option value="nada">Please select ...</option>
+		<option value="int">int</option>
+		<option value="double">double</option>
+		<option value="float">float</option>
+		<option value="char">char</option>
+		<option value="String">String</option>
+	</select>	
+	<br>
+	<br>
 
-		<!--Arg Names -->
-		<h3> Argument Names (separated by a comma)</h3>
-		<input type="text" placeholder="Arg1, Arg2" name="arg_input" ></td>
-		<br><br>		
+	<!-- Optional - MethodName - form input -->
+	<font color="white" size="3" face="verdana">[Optional] Method Name:</font>
+	<input type="text" placeholder="Some Method Name" name="methodname_input" class="methodInput"></td>
+	<br>
 
-		<!--Arg Type -->
-		<h3> Argument Types (separated by a comma)</h3>
-		<input type="text" placeholder="Arg1Type, Arg2Type" name="argt_input" ></td>
-		<br><br>					
-		
-		<!-- Question - Input -->
-		<h3>Question:</h3><br>
-		<textarea name="q_input" style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your Question Here"></textarea>
-		<br>
+	<!--Optional - Arg Names -->
+	<font color="white" size="3" face="verdana">[Optional] Argument Names: </font>
+	<input type="text" placeholder="Arg1, Arg2" name="arg_input" ></td>
+	<br>
+	<br>
 
-		<!-- Test Case  <h3>Test Case:</h3><br> -->
-		<textarea name="tc_input" style="resize:none;" rows="7" cols="20" type="text" class="textInput" placeholder="Test Case Here"></textarea>
+	<!--Arg Type -->
+	<font color="white" size="3" face="verdana">Argument Type </font>
+	<!--Number of Args -->
+	<font color="white" size="3" face="verdana">&emsp; Number of Arguements</font>
+	<br>
+	
 
+	<!-- Arg Type - input -->
+	<select name="argt_input" id="argt_input">
+		<option value="nada">Please select ...</option>
+		<option value="int">int</option>
+		<option value="double">double</option>
+		<option value="float">float</option>
+		<option value="char">char</option>
+		<option value="String">String</option>
+	</select>		
 
-		<!-- Test Case Answer -->
-		<textarea name="tcAns_input" style="resize:none;" rows="7" cols="20" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
-		<br>	
+	<!--Number of Args - input -->
+	<input type="text" placeholder="# of Args of this type" name="num_of_args_input" ></td>	
+	<br>
+	<br>	
+	
+
+	<!-- Question - Input -->
+	<font color="white" size="3" face="verdana">Question</font><br>
+	<textarea name="q_input" style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your Question Here"></textarea>
+	<br>
+
+	<!-- Test Case - TextArea -->	
+	<textarea name="tc_input" style="resize:none;" rows="7" cols="29" type="text" class="textInput" placeholder="Test Case Here"></textarea>
+
+	<!-- Test Case Answer - TextArea -->
+	<textarea name="tcAns_input" style="resize:none;" rows="7" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
+	<br>	
 
 
 	<br>
 	<br>
 	<input type="reset" class="btn btn-block btn-red-primary">
 	<input type="submit" name="send_question" value="Submit" class="btn btn-hover btn-block btn-green-primary" >
-	</form>
-
+</form>
+ 
 	<?php //echo $_POST["q_input"]  ?>
-		</div>
-	<!--</center> -->
-</div>
 
 
 
@@ -178,6 +188,6 @@ session_start();
 	
 ?>
 
-
+</center>	
 </body>
 </html>
