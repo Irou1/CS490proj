@@ -48,7 +48,7 @@ session_start();
 
 <form method="post">
 		
-	<!-- Catagory options -->
+	<!-- Category options -->
 	<font color="white" size="3" face="verdana">Category:</font>
 		<select name="myCategory" id="myCategory">
 		<option value="nada">Please select ...</option>
@@ -57,6 +57,8 @@ session_start();
 		<option value="method">Methods</option>
 		<option value="statement">Statements</option>
 	</select>
+	<br>
+	<br>
 
 	
 	<!-- Diff options -->
@@ -68,7 +70,7 @@ session_start();
 	</select>
 
 	<!-- Return type options -->
-	<font color="white" size="3" face="verdana"> Return Type:</font>
+	<font color="white" size="3" face="verdana">&emsp; Return Type:</font>
 	<select name="myRtype" id="myRtype">
 		<option value="nada">Please select ...</option>
 		<option value="int">int</option>
@@ -80,21 +82,10 @@ session_start();
 	<br>
 	<br>
 
-	<!-- Optional - MethodName - form input -->
-	<font color="white" size="3" face="verdana">[Optional] Method Name:</font>
-	<input type="text" placeholder="Some Method Name" name="methodname_input" class="methodInput"></td>
-	<br>
-
-	<!--Optional - Arg Names -->
-	<font color="white" size="3" face="verdana">[Optional] Argument Names: </font>
-	<input type="text" placeholder="Arg1, Arg2" name="arg_input" ></td>
-	<br>
-	<br>
-
 	<!--Arg Type -->
 	<font color="white" size="3" face="verdana">Argument Type </font>
 	<!--Number of Args -->
-	<font color="white" size="3" face="verdana">&emsp; Number of Arguements</font>
+	<font color="white" size="3" face="verdana">&emsp; Number of Arguments</font>
 	<br>
 	
 
@@ -113,9 +104,9 @@ session_start();
 	<br>
 	<br>	
 	
-
 	<!-- Question - Input -->
-	<font color="white" size="3" face="verdana">Question</font><br>
+	<font color="white" size="4" face="verdana">Question</font>
+	<br>
 	<textarea name="q_input" style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your Question Here"></textarea>
 	<br>
 
@@ -125,7 +116,16 @@ session_start();
 	<!-- Test Case Answer - TextArea -->
 	<textarea name="tcAns_input" style="resize:none;" rows="7" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
 	<br>	
+	<br>
 
+	<!-- Optional - MethodName - form input -->
+	<font color="white" size="3" face="verdana">[Optional] Method Name:</font>
+	<input type="text" placeholder="Some Method Name" name="methodname_input" class="methodInput"></td>
+	<br>
+
+	<!--Optional - Arg Names -->
+	<font color="white" size="3" face="verdana">[Optional] Argument Names: </font>
+	<input type="text" placeholder="Arg1, Arg2, Arg3, ArgX" name="arg_input" ></td>
 
 	<br>
 	<br>
