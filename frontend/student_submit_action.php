@@ -50,17 +50,18 @@ session_start();
 	);
 
 	//Student Answers
-	$x=0;
-	foreach($_POST['studentAnsInput'] as $value){
 
-		$jsonData[$x] = $value;		 //BEST
-		$x++;
+	$studentData=array();
+	foreach($_POST['studentAnsInput'] as $value){
+		array_push($studentData, $value);
+		
 	}
 	
-	/*
-	print_r($jsonData); 		//Testing - printing all jsonData****
-    echo "<br>";
-	*/
+	array_push($jsonData, $studentData);	//push studentData to jsonData
+	
+	//print_r($jsonData); 		//Testing - printing all jsonData****
+    //echo "<br>";
+	
 	
 	//MID URL
 	$url = "https://web.njit.edu/~or32/rc/sendstudentanswers.php";
@@ -86,7 +87,7 @@ session_start();
 	
 	//echo gettype ( $result );		//get var type 
 
-	echo $result; 				//testing - echo middle 
+	//echo $result; 				//testing - echo middle 
 
 	$resultz = json_decode($result, 1);	//json decode
 
