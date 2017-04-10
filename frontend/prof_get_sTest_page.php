@@ -73,9 +73,9 @@ include 'profSession.php';
     $testz = json_decode($result, 1); //json decode
 
     //display resultz - json array
-    print('<pre>');
-    print_r ($testz);
-    print('</pre>');
+    //print('<pre>');
+    //print_r ($testz);
+    //print('</pre>');
     
    ?>
 

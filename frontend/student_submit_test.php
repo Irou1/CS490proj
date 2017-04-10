@@ -41,7 +41,7 @@ include 'studentSession.php';
 //testing
 
   $someJSON = json_encode($_POST["studentAnsInput$j"]);
-  echo $someJSON;
+  //echo $someJSON;
 
  }  //for loop curly brace?> 
 

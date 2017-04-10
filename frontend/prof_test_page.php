@@ -30,7 +30,11 @@ include 'profSession.php';
 </head>
 
 <body>
+
 <center>
+
+
+
       <div>
       <?php
 
@@ -53,7 +57,10 @@ include 'profSession.php';
 
 
          <h2>Currently editing test:  <?php echo $exam; ?></h2>
+         <button class="btn btn-block btn-red-primary" onclick="window.location.href='prof_home.php?BURN=true'" />Delete Test</button> <!-- testing delete test -->
+
          <form method="post" action="student_submit_action.php"> 
+
 	    <br>
 	    <?php 
 

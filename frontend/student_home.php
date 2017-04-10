@@ -64,7 +64,7 @@ include 'studentSession.php';
        	//echo $test;
 
        	echo "<p>";
-       	echo "<input type='radio' name=testList[]' value='$test' required>"; //Test - radio button
+       	echo "<input type='radio' name='testList[]' value='$test' required>"; //Test - radio button
        	echo "<font color=DarkBlue>$test</font>";
        	echo "</p>";
           }
@@ -75,8 +75,8 @@ include 'studentSession.php';
     </div>
 
     <?php 
-    //------Student check grade, he/she took--------------WORKING ON IT--------------------------?>
-
+    //------Student check grade, he/she took--------------WORKING ON IT--------------
+    /*
     <?php
     //JSON data
     $jsonData = array(
@@ -118,9 +118,13 @@ include 'studentSession.php';
     print('<pre>');
     print_r ($studentOldTests);
     print('</pre>');  
-  ?>
 
-  <?php //---------Student old test - see Grade-------------------?>
+    ------------?>
+
+  */?>
+
+  <?php //---------Student old test - see Grade--------
+  /*
   <div id="wrapper">
 
     <div id="topbox">
@@ -136,7 +140,7 @@ include 'studentSession.php';
     <form method="post" action="/~ka279/cs490/rc/student_view_old_test.php"> 
       <font color="white" size="3" face="verdana">List of Tests:</font>
        <?php
-       foreach($studentOldTests as $oldtest){
+       foreach( json_decode($result) as $oldtest){
         //echo $test;
 
         echo "<p>";
@@ -149,6 +153,10 @@ include 'studentSession.php';
        <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedOldExam" value="View Grade for this Test">
     </form>
     </div>
+  */ ?>
+  <br>
+    <input type="button" value="View Grade" class="btn btn-hover btn-block btn-orange-primary" onclick="window.location.href='s_view_grade.php'" />
+
 
 </center> 
 </body>

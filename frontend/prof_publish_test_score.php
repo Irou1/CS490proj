@@ -39,8 +39,8 @@ include 'profSession.php';
    //redirect to test page
    $selectedStudentTest = $_POST['testNameList'][0];
  
-   echo $selectedStudentTest;
-   echo "<br>";
+   //echo $selectedStudentTest;
+   //echo "<br>";
 
 ?>
 
@@ -83,7 +83,7 @@ include 'profSession.php';
 	
 	//echo gettype ( $result );		//get var type 
 
-	echo $result; 				//testing - echo middle 
+	//echo $result; 				//testing - echo middle 
 
 	$resultz = json_decode($result, 1);	//json decode
 

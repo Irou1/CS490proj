@@ -9,10 +9,10 @@ function hideTestDiv(){
 }
 
 function showOldTestDiv(){
-   document.getElementById('gradedTests').style.display = "block";
+   document.getElementById('showOldTestDiv').style.display = "block";
 }
 function hideOldTestDiv(){
-   document.getElementById('gradedTests').style.display = "none";
+   document.getElementById('showOldTestDiv').style.display = "none";
 }
 
 function showGradeDiv(){

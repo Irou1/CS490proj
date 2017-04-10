@@ -63,6 +63,7 @@ session_start();
 </form>
 
 
+
 <?php
 //if(isset($_POST['ucid_input']) && isset($_POST['password_input'])){
 if (isset($_POST['login_button'])) {
@@ -126,5 +127,20 @@ if (isset($_POST['login_button'])) {
 
 ?>
 </center>
+
+<table class="tableBottom">
+  <tr>
+    <th>Front</th>
+    <th>Middle</th>
+    <th>Backend</th>
+  </tr>
+  <tr>
+    <td>Kenneth Aparicio</td>
+    <td>Oscar Rodriguez</td>
+    <td>Edward Martin</td>
+  </tr>
+
+</table>
+
 </body>
 </html>

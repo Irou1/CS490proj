@@ -47,9 +47,9 @@ include 'profSession.php';
 
 	$students = json_decode($result, 1);	//json decode
 
-	echo "<pre>";
-	print_r($students);
-	echo "</pre>";
+	//echo "<pre>";
+	//print_r($students);
+	//echo "</pre>";
 ?>
 
 <script type="text/javascript">

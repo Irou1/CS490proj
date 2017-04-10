@@ -81,7 +81,7 @@ include 'studentSession.php';
 	
 	//echo gettype ( $result );		//get var type 
 
-	echo $result; 				//testing - echo middle 
+	//echo $result; 				//testing - echo middle 
 
 	$resultz = json_decode($result, 1);	//json decode
 
