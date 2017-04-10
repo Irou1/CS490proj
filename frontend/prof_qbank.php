@@ -164,15 +164,28 @@ session_start();
 //if ( isset($_POST['send_question']) ) {
 	function sendQ() {
 		
-		$totalstr="";
+		$arr_Type = array();
+		foreach ($_POST['argt_input'] as $type){
+			array_push($arr_Type, $type);
+			//echo $type;
+			//echo "<br>";
+		}
+
+		$realTypes="";
+		$cnt = 0;
 		foreach ($_POST['num_of_args_input'] as $num){
-			$cnt = 0;
+		
 			for ($i=0; $i < $num; $i++){
-				$totalstr .= $_POST['argt_input'][$cnt] . ',';
+				$realTypes .= $arr_Type[$cnt] . ',';
 			}
 			$cnt += 1;
 		} 
-		$totalstr = trim($totalstr, ',');
+		$realTypes = trim($realTypes, ',');
+		//echo $realTypes;
+
+		//echo "<pre>";
+		//print_r($_POST['argt_input']);
+		//echo "<pre>";
 
 		//JSON data
 		$jsonData = array(
@@ -180,7 +193,7 @@ session_start();
 		'cat' => $_POST["myCategory"],
 		'diff' => $_POST["myDiff"],
 		'returnType' => $_POST["myRtype"],
-		'argType' => $totalstr, 
+		'argType' => $realTypes, 
 		'quest' => $_POST["q_input"],
 		'testCase' => $_POST["tc_input"],
 		'tcAns' => $_POST["tcAns_input"],
