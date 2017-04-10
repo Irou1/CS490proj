@@ -35,7 +35,8 @@ session_start();
       header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_test_page.php?exam=$selectedExam");
       exit;
    }else{
-      echo "Unable to Load test";
+   		header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_manage_test.php");
+      //echo "Unable to Load test";
    }
 
 ?>

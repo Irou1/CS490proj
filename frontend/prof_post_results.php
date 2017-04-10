@@ -2,6 +2,7 @@
 Kenneth Aparicio 
 Front End
 CS490
+
 Prof -> Home -> [Post Results] 
 
  -->
@@ -57,14 +58,14 @@ function showStudentsDiv(){
 }	
 
 
-
 </script>
 
 </head>
 
 <body>
 <center>
-	<h1>List of students which took a test</h1>
+<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
+<h1>List of students which took a test</h1>
      
 <div id="wrapper">
 

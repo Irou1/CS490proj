@@ -41,7 +41,7 @@ session_start();
 		<h1>Create Test</h1>
 
 		<form method="post">
-		<input type="text" name="examName" placeholder="Enter a new Test Name" class="textInput">
+		<input type="text" name="examName" placeholder="Enter a new Test Name" class="textInput" required>
 
 		<!-- Test options 
 		<h3> Select Test:</h3><select name="myTest" id="myTest">

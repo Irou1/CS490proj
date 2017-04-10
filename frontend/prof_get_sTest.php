@@ -34,7 +34,9 @@ session_start();
       header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_get_sTest_page.php?student=$selectedStudent");
       exit;
    }else{
-      echo "Unable to Load Student's test";
+   	  header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_post_results.php");
+
+      //echo "Unable to Load Student's test";
    }
 
 ?>

@@ -3,7 +3,7 @@ Kenneth Aparicio
 Front End
 CS490
 
-Prof -> Home -> Post Results -> Prof Get Student Test -> [Prof get student page]
+Prof -> Home -> Post Results -> Prof Get Student Test -> [Prof get student Test page]
  -->
 
  <?php
@@ -27,11 +27,13 @@ session_start();
 </head>
 
 <body>
+<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
 <center>
  
     <?php
       $student = $_GET['student'];  
       $_POST['sn'] = $student;
+      $_SESSION['studentName'] = $student;
     ?>
 <h2><?php echo $student; ?> POV</h2>
 </center> 
@@ -67,16 +69,52 @@ session_start();
     
     //echo gettype ( $result );   //get var type 
 
-    $resultz = json_decode($result, 1); //json decode
+    $testz = json_decode($result, 1); //json decode
 
     //display resultz - json array
     print('<pre>');
-    print_r ($resultz);
+    print_r ($testz);
     print('</pre>');
     
    ?>
 
+  <script type="text/javascript">
+  function showStudentTestDiv(){
+     document.getElementById('studentTestDivSpace').style.display = "block";
+  } 
+  </script>
 
+  <center>
 
+  <br>
+
+  <?php //-------------------------------Testing-----------------------------------------?>
+
+  <div id="wrapper">
+
+    <div id="topbox">
+    <button type="button" class="btn btn-hover btn-block btn-primary" onclick="showStudentTestDiv()">Show Tests</button>
+  </div>
+
+    <div id="studentTestDivSpace" style="display:none;">
+    
+    <form method="post" action="prof_publish_test_score.php"> 
+        <h3>List of Tests which <?php echo $student ?> took</h3>
+       <?php
+       foreach($testz["exam"] as $testNamez){
+
+        echo "<p>";
+        echo "<input type='radio' name=testNameList[]' value='$testNamez'>"; //Test - radio button
+        echo "<font color=DarkBlue>$testNamez</font>";
+        echo "</p>";
+          }
+       ?>         
+        <br> 
+       <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedStudentTest" value="Publish Student Test">
+    </form>
+ </div>
+  
+
+  </center>
    </body>
 </html>

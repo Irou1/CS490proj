@@ -3,12 +3,7 @@ Kenneth Aparicio
 Front End
 CS490
 
-Student -> Home -> Take Test -> Test Page -> [click submit test]
-
-Send to Middle
-1) Student Name
-2) Exam Name
-3) Student Answers (in array)
+Prof -> Home -> Post Results -> Prof Get Student Test -> Prof get student Test page -> [Prof Publish Test Score]
  -->
 
  <?php
@@ -17,50 +12,55 @@ include 'showerrors.php';
  
 //start session
 session_start();
-?>
+ ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>CS490 Student Home Page</title>
+	<title>CS490 Prof Publish Student Test Score Redirecting</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 <ul>
   <li><a class="active" href="student_home.php">Home</a></li>
   <li style="float:right"><a href="logout.php">LogOut</a></li>
-</ul>
+</ul>	
 </head>
 
 <body>
 <center>
-<h1>Test Submitted </h1>
-<h1>Thank You <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1>
-
-
-
+<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
+<h1>Thank You for grading <?php echo ucfirst($_SESSION['studentName']) ?> </h1>
+</center>
 
 <?php
-//if (isset($_POST['submit_student_answers_button'])) {
+
+   //redirect to test page
+   $selectedStudentTest = $_POST['testNameList'][0];
+ 
+   echo $selectedStudentTest;
+   echo "<br>";
+
+?>
+
+<?php
 
 	//JSON data
 	$jsonData = array(
-	'sName' => $_SESSION['s_ucid'],
-	'testName' => $_SESSION['examName']
+	'studentName' => $_SESSION['studentName'],
+	'examName' => $selectedStudentTest
+	//'flag' => 1
 
 	);
 
-	//Student Answers
-	foreach($_POST['studentAnsInput'] as $value){
-		array_push($jsonData, $value);		//push $value to jsonData Array
-		
-	}
 
 	//print_r($jsonData); 		//Testing - printing all jsonData****
     //echo "<br>";
 	
+	
 	//MID URL
-	$url = "https://web.njit.edu/~or32/rc/sendstudentanswers.php";
-	//$url = "https://web.njit.edu/~em244/CS490/Model/getGradedAnswers.php";
+	//$url = "https://web.njit.edu/~or32/rc/changeviewflag.php";
+	$url = "https://web.njit.edu/~em244/CS490/changeExamStatus.php";
 
 	//initiate cURL
 	$ch = curl_init($url);
@@ -94,7 +94,5 @@ session_start();
 
 ?>
 
-
-</center> 
 </body>
 </html>
