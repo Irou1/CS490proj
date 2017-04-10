@@ -49,9 +49,9 @@ include 'profSession.php';
     <div id="topbox">
     <h3>Edit a Test</h3>
     <button type="button" class="btn btn-hover btn-block btn-primary" onclick="showTestDiv()">Choose a Test to Edit</button>
-    <h4>See Previous results</h4>
-    <button type="button" class="btn btn-hover btn-block btn-green-primary" onclick="showGradeDiv()">See current grades</button>
- </div>
+    </div>
+
+ </div> <!-- wrapper end div -->
 
     <div id="availableTests" style="display:none;">
     
@@ -62,7 +62,7 @@ include 'profSession.php';
        	//echo $test;
        	//echo "<div style ='font:11px/21px Arial,tahoma,sans-serif;color:#ff0000'> $test</div>";
        	echo "<p>";
-       	echo "<input type='radio' name=testList[]' value='$test'>"; //Test - radio button
+       	echo "<input type='radio' name=testList[]' value='$test' required>"; //Test - radio button
        	echo "<font color=DarkBlue>$test</font>";
        	echo "</p>";
           }
@@ -71,6 +71,9 @@ include 'profSession.php';
        <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedExam" value="Edit">
     </form>
      </div>
+
+    <h4>See Previous results</h4>
+    <button type="button" class="btn btn-hover btn-block btn-green-primary" onclick="showGradeDiv()">See current grades</button>
 
 
 <body>

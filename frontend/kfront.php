@@ -117,10 +117,11 @@ if (isset($_POST['login_button'])) {
 		$_SESSION["p_ucid"] = $_POST['ucid_input']; // set prof-ucid SESSION
 		header("location: prof_home.php");
 
-	}else {
+	}elseif ($resultz[0] == 0 && $resultz[1] == 0) {
 		//echo "no session";
 		$_SESSION['message'] = "Username/password combination incorrect";
-	} 
+	}
+
 } 
 
 ?>

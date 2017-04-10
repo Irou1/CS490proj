@@ -60,8 +60,8 @@ include 'profSession.php';
 	
 	
 	//MID URL
-	//$url = "https://web.njit.edu/~or32/rc/changeviewflag.php";
-	$url = "https://web.njit.edu/~em244/CS490/changeExamStatus.php";
+	$url = "https://web.njit.edu/~or32/rc/changeviewflag.php";
+	//$url = "https://web.njit.edu/~em244/CS490/changeExamStatus.php";
 
 	//initiate cURL
 	$ch = curl_init($url);
