@@ -52,12 +52,13 @@ session_start();
 		
 	<!-- Category options -->
 	<font color="white" size="3" face="verdana">Category:</font>
-		<select name="myCategory" id="myCategory">
-		<option value="nada">Please select ...</option>
+		<select name="myCategory" id="myCategory" required>
+		<option value="">Please select ...</option>
 		<option value="array">Arrays</option>
 		<option value="loop">Loops</option>
 		<option value="method">Methods</option>
-		<option value="statement">Statements</option>
+		<option value="relational">Relational</option>
+		<option value="recursive">Recursive</option>		
 	</select>
 	<br>
 	<br>
@@ -65,8 +66,8 @@ session_start();
 	
 	<!-- Diff options -->
 	<font color="white" size="3" face="verdana">Difficulty:</font>   <!-- tab space is &emsp; -->
-		<select name="myDiff" id="myDiff">
-		<option value="nada">Please select ...</option>
+		<select name="myDiff" id="myDiff" required>
+		<option value="">Please select ...</option>
 		<option value="0">Easy</option>
 		<option value="1">Medium</option>
 	</select>
@@ -74,14 +75,15 @@ session_start();
 
 	<!-- Return type options -->
 	<font color="white" size="3" face="verdana">Return Type:</font>
-	<select name="myRtype" id="myRtype">
-		<option value="nada">Please select ...</option>
+	<select name="myRtype" id="myRtype" required>
+		<option value="">Please select ...</option>
 		<option value="int">int</option>
 		<option value="double">double</option>
 		<option value="float">float</option>
 		<option value="char">char</option>
 		<option value="String">String</option>
 	</select>	
+
 	<br>
 	<br>
 
@@ -90,37 +92,52 @@ session_start();
 	<div class="dividerA"/></div>
 	<!--Number of Args -->
 	<font color="white" size="3" face="verdana">Number of Arguments</font>
-	<br>
-	
+
+	<!-- Add One more Arg Type -->
+	<button class="btnSmall btn-hover btn-block btn-primary" onclick="addOneMoreArgType_Function()">+</button>
+
+	<br>		
 
 	<!-- Arg Type - input -->
-	<select name="argt_input" id="argt_input">
-		<option value="nada">Please select ...</option>
+	<select name="argt_input[]">
+		<option value="">Please select ...</option>
 		<option value="int">int</option>
 		<option value="double">double</option>
 		<option value="float">float</option>
 		<option value="char">char</option>
 		<option value="String">String</option>
 	</select>	
-
-	<div class="dividerB"/></div>
 	
 	<!--Number of Args - input can only be a number -->
-	<input type="number" min="0" placeholder="# of Args of this type" name="num_of_args_input" ></td>	
+	<input type="number" min="0" placeholder="# of Args of this type" name="num_of_args_input[]" ></td>	
+	
 	<br>
+	<!-- display more arg types -->	
+	<p id="moreArg"></p> 
+	<br>
+	<script>
+	function addOneMoreArgType_Function() {
+		var abc ='<span><select name="argt_input[]" ><option value="">Please select ...</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="char">char</option><option value="String">String</option></select></span>\r\n';
+		document.getElementById('moreArg').innerHTML += abc;  
+
+		var xyz = '<span><input type="number" min="0" placeholder="# of Args of this type" name="num_of_args_input[]" ></td>	 </span><br>\r\n';
+		document.getElementById('moreArg').innerHTML += xyz;  
+	}
+	</script>	
 	<br>	
 	
+
 	<!-- Question - Input -->
 	<font color="white" size="4" face="verdana">Question</font>
 	<br>
-	<textarea name="q_input" style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your Question Here"></textarea>
+	<textarea name="q_input" required style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your Question Here"></textarea>
 	<br>
 
 	<!-- Test Case - TextArea -->	
-	<textarea name="tc_input" style="resize:none;" rows="7" cols="29" type="text" class="textInput" placeholder="Test Case Here"></textarea>
+	<textarea name="tc_input" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Here"></textarea>
 
 	<!-- Test Case Answer - TextArea -->
-	<textarea name="tcAns_input" style="resize:none;" rows="7" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
+	<textarea name="tcAns_input" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
 	<br>	
 	<br>
 
@@ -146,19 +163,30 @@ session_start();
 <?php	
 //if ( isset($_POST['send_question']) ) {
 	function sendQ() {
-	//function php_curl(){
+		
+		$totalstr="";
+		foreach ($_POST['num_of_args_input'] as $num){
+			$cnt = 0;
+			for ($i=0; $i < $num; $i++){
+				$totalstr .= $_POST['argt_input'][$cnt] . ',';
+			}
+			$cnt += 1;
+		} 
+		$totalstr = trim($totalstr, ',');
+
 		//JSON data
 		$jsonData = array(
 		'prof' => $_SESSION['p_ucid'],
 		'cat' => $_POST["myCategory"],
 		'diff' => $_POST["myDiff"],
-		'quest' => $_POST["q_input"],
 		'returnType' => $_POST["myRtype"],
-		'methodName' => $_POST["methodname_input"],
-		'argName' => $_POST["arg_input"], 
-		'argType' => $_POST["argt_input"],
+		'argType' => $totalstr, 
+		'quest' => $_POST["q_input"],
 		'testCase' => $_POST["tc_input"],
-		'tcAns' => $_POST["tcAns_input"]
+		'tcAns' => $_POST["tcAns_input"],
+		'methodName' => $_POST["methodname_input"],
+		'argName' => $_POST["arg_input"] 
+		
 		);
 		
 		//MID URL
