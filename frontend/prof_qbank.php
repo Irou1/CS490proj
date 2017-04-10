@@ -44,7 +44,9 @@ session_start();
 <center>
 	<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
 	<h1>Question Creator</h1>
+</center>
 
+<div style="text-align: center">
 
 <form method="post">
 		
@@ -62,15 +64,16 @@ session_start();
 
 	
 	<!-- Diff options -->
-	<font color="white" size="3" face="verdana">&emsp; Difficulty:</font>   <!-- tab space is &emsp; -->
+	<font color="white" size="3" face="verdana">Difficulty:</font>   <!-- tab space is &emsp; -->
 		<select name="myDiff" id="myDiff">
 		<option value="nada">Please select ...</option>
 		<option value="0">Easy</option>
 		<option value="1">Medium</option>
 	</select>
 
+
 	<!-- Return type options -->
-	<font color="white" size="3" face="verdana">&emsp; Return Type:</font>
+	<font color="white" size="3" face="verdana">Return Type:</font>
 	<select name="myRtype" id="myRtype">
 		<option value="nada">Please select ...</option>
 		<option value="int">int</option>
@@ -83,9 +86,10 @@ session_start();
 	<br>
 
 	<!--Arg Type -->
-	<font color="white" size="3" face="verdana">Argument Type </font>
+	<font color="white" size="3" face="verdana">Argument Type</font>
+	<div class="dividerA"/></div>
 	<!--Number of Args -->
-	<font color="white" size="3" face="verdana">&emsp; Number of Arguments</font>
+	<font color="white" size="3" face="verdana">Number of Arguments</font>
 	<br>
 	
 
@@ -97,10 +101,12 @@ session_start();
 		<option value="float">float</option>
 		<option value="char">char</option>
 		<option value="String">String</option>
-	</select>		
+	</select>	
 
-	<!--Number of Args - input -->
-	<input type="text" placeholder="# of Args of this type" name="num_of_args_input" ></td>	
+	<div class="dividerB"/></div>
+	
+	<!--Number of Args - input can only be a number -->
+	<input type="number" min="0" placeholder="# of Args of this type" name="num_of_args_input" ></td>	
 	<br>
 	<br>	
 	
@@ -188,6 +194,7 @@ session_start();
 	
 ?>
 
-</center>	
+</div>
+
 </body>
 </html>

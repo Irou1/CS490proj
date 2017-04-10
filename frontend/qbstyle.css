@@ -168,3 +168,14 @@ li a:hover:not(.active) {
   padding-top: 10px;
 }
 
+.dividerA{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+.dividerB{
+    width:8px;
+    height:auto;
+    display:inline-block;
+}
