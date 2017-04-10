@@ -12,6 +12,7 @@ include 'showerrors.php';
 
 //start session
 session_start();
+include 'profSession.php';
 ?>
 
 <!DOCTYPE html>

@@ -13,6 +13,8 @@ include 'showerrors.php';
 
 //start session
 session_start();
+include 'profSession.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -42,14 +44,6 @@ session_start();
 
 		<form method="post">
 		<input type="text" name="examName" placeholder="Enter a new Test Name" class="textInput" required>
-
-		<!-- Test options 
-		<h3> Select Test:</h3><select name="myTest" id="myTest">
-			<option value="nada">Please select ...</option>
-			<option value="0">Test1</option>
-			<option value="1">Test2</option>
-		</select>
-		-->
 
 
 <?php	

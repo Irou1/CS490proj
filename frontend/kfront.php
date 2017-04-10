@@ -15,6 +15,18 @@ Login Page
 session_start();
 ?>
 
+<?php	
+	//check session if student or prof
+	if (isset($_SESSION['s_ucid'])) {
+		$_SESSION['message'] = "you're a student, not a prof! quit tryna hack your PROF!";
+	}
+	/*
+	if(isset($_SESSION['p_ucid'])) {
+		$_SESSION['message'] = "you're a prof, not a student!";
+	}
+	*/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,14 +45,7 @@ session_start();
 <center>
 
 
-	<?php	
-	//check session if student or prof
-	if (isset($_SESSION['s_ucid'])) {
-		$_SESSION['message'] = "you're a student, not a prof! quit tryna hack your PROF!";
-	}elseif(isset($_SESSION['p_ucid'])) {
-		$_SESSION['message'] = "you're a prof, not a student!";
-	}
-	?>
+
 	
 <form method="post" action="kfront.php">
 	<h2>CS490 Login</h1>

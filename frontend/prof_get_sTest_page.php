@@ -12,6 +12,7 @@ include 'showerrors.php';
  
 //start session
 session_start();
+include 'profSession.php';
  ?>
 
 <!DOCTYPE html>
@@ -27,9 +28,9 @@ session_start();
 </head>
 
 <body>
-<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
+
 <center>
- 
+<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1> 
     <?php
       $student = $_GET['student'];  
       $_POST['sn'] = $student;

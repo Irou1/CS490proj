@@ -12,6 +12,7 @@ include 'showerrors.php';
 
 //start session
 session_start();
+include 'studentSession.php';
 
  ?>
 
@@ -43,16 +44,6 @@ session_start();
 <center>
 	<h1>Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1>
 	
-	<?php	
-	//if session student ucid is set, it's true -> you are logged in
-	if (isset($_SESSION['s_ucid'])) {
-		//echo "You have successfully logged in Student!"; 
-	}else {
-		//redirects to kfront page ...if not logged in
-		header("location: kfront.php");
-	}
-	?>
-
   <div id="wrapper">
 
     <div id="topbox">

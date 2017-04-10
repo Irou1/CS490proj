@@ -17,6 +17,7 @@ include 'showerrors.php';
  
 //start session
 session_start();
+include 'studentSession.php';
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +36,6 @@ session_start();
 <center>
 <h1>Test Submitted </h1>
 <h1>Thank You <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1>
-
-
 
 
 <?php
