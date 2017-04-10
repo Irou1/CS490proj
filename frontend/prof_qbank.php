@@ -71,6 +71,7 @@ include 'profSession.php';
 		<option value="">Please select ...</option>
 		<option value="0">Easy</option>
 		<option value="1">Medium</option>
+		<option value="2">Hard</option>
 	</select>
 
 

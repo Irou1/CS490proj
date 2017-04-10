@@ -8,6 +8,13 @@ function hideTestDiv(){
    document.getElementById('availableTests').style.display = "none";
 }
 
+function showOldTestDiv(){
+   document.getElementById('gradedTests').style.display = "block";
+}
+function hideOldTestDiv(){
+   document.getElementById('gradedTests').style.display = "none";
+}
+
 function showGradeDiv(){
    document.getElementById('gradedTests').style.display = "block";
 }

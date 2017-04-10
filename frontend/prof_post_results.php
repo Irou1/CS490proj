@@ -82,7 +82,7 @@ function showStudentsDiv(){
        foreach($students["username"] as $s){
 
        	echo "<p>";
-       	echo "<input type='radio' name=studentList[]' value='$s'>"; //Test - radio button
+       	echo "<input type='radio' name=studentList[]' value='$s' required>"; //Test - radio button
        	echo "<font color=DarkBlue>$s</font>";
        	echo "</p>";
           }
