@@ -3,7 +3,7 @@ Kenneth Aparicio
 Front End
 CS490
 
-Prof -> Home -> [Take Test] 
+Student -> Home -> [Take Test] 
  -->
 
  <?php

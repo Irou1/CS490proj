@@ -94,7 +94,7 @@ session_start();
 	<font color="white" size="3" face="verdana">Number of Arguments</font>
 
 	<!-- Add One more Arg Type -->
-	<button class="btnSmall btn-hover btn-block btn-primary" onclick="addOneMoreArgType_Function()">+</button>
+	<button class="btnSmall btn-hover btn-block btn-green-primary" onclick="addOneMoreArgType_Function()">+</button>
 
 	<br>		
 

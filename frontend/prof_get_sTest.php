@@ -1,0 +1,44 @@
+<!--
+Kenneth Aparicio 
+Front End
+CS490
+
+Prof -> Home -> Post Results -> [Prof Get Student Test] 
+ -->
+
+ <?php
+//show errors
+include 'showerrors.php';
+ 
+//start session
+session_start();
+ ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>CS490 Prof Get Student Test Page Redirecting</title>
+</head>
+
+<body>
+
+<?php
+
+   //redirect to test page
+   $selectedStudent = $_POST['studentList'][0];
+
+  
+   if($selectedStudent){ 
+      header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_get_sTest_page.php?student=$selectedStudent");
+      exit;
+   }else{
+      echo "Unable to Load Student's test";
+   }
+
+?>
+
+
+</body>
+</html>
