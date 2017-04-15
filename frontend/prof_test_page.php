@@ -76,9 +76,7 @@ include 'profSession.php';
     
         <textarea id="studentAnsInput" class ="input" placeholder="Enter your answer here" rows="7" cols="60"  name="studentAnsInput['<?php echo $question; ?>']"></textarea>
 
-        <?php 
-
-        ?>
+   
              
 			<br>
 			

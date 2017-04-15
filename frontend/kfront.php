@@ -5,9 +5,6 @@ CS490
 
 Login Page
 
-0=unsucc, 1=succ
-0=student, 1 prof
-
  -->
  
 <?php
@@ -128,6 +125,10 @@ if (isset($_POST['login_button'])) {
 ?>
 </center>
 
+
+
+<?php //testing   ?>
+
 <table class="tableBottom">
   <tr>
     <th>Front</th>
@@ -139,8 +140,8 @@ if (isset($_POST['login_button'])) {
     <td>Oscar Rodriguez</td>
     <td>Edward Martin</td>
   </tr>
-
 </table>
+
 
 </body>
 </html>

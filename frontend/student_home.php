@@ -48,7 +48,7 @@ include 'studentSession.php';
   <div id="wrapper">
 
     <div id="topbox">
-    <font color="white" size="3" face="verdana">Take a Test:</font><br>
+    <!-- <font color="white" size="3" face="verdana">Take a Test:</font><br> -->
     <button type="button" class="btn btn-hover btn-block btn-primary" onclick="showTestDiv();">Take a Test</button>
     <br>
     </div>
@@ -65,12 +65,12 @@ include 'studentSession.php';
 
        	echo "<p>";
        	echo "<input type='radio' name='testList[]' value='$test' required>"; //Test - radio button
-       	echo "<font color=DarkBlue>$test</font>";
+       	echo "<font color=white>$test</font>";
        	echo "</p>";
           }
        ?>         
         <br> 
-       <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedExam" value="Start Testing">
+       <input type="submit" class="btn btn-hover btn-block btn-green-primary" name="selectedExam" value="Start Testing">
     </form>
     </div>
 

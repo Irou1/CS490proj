@@ -30,6 +30,25 @@ include 'profSession.php';
   <li style="float:right"><a href="logout.php">LogOut</a></li>
 </ul>
 
+	<script>
+	function addOneMoreArgType_Function() {
+		var abc ='<span><select name="argt_input[]" ><option value="">Please select ...</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="char">char</option><option value="String">String</option></select></span>\r\n';
+		document.getElementById('moreArg').innerHTML += abc;  
+
+		var xyz = '<span><input type="number" min="0" placeholder="# of Args of this type" name="num_of_args_input[]" ></td>	 </span><br>\r\n';
+		document.getElementById('moreArg').innerHTML += xyz;  
+	}
+
+	function addOneMoreTestCase_Function() {
+		var abcd ='<span><textarea name="tc_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Here"></textarea></span>\r\n';
+		document.getElementById('moreTestCase').innerHTML += abcd;  
+
+		var xyzz = '<span>	<textarea name="tcAns_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea></span><br>\r\n';
+		document.getElementById('moreTestCase').innerHTML += xyzz;  
+	}	
+
+	</script>
+
 </head>
 
 <body>
@@ -114,18 +133,9 @@ include 'profSession.php';
 	<input type="number" min="0" placeholder="# of Args of this type" name="num_of_args_input[]" ></td>	
 	
 	<br>
-	<!-- display more arg types -->	
+	<!-- display more arg types -->	3
 	<p id="moreArg"></p> 
 	<br>
-	<script>
-	function addOneMoreArgType_Function() {
-		var abc ='<span><select name="argt_input[]" ><option value="">Please select ...</option><option value="int">int</option><option value="double">double</option><option value="float">float</option><option value="char">char</option><option value="String">String</option></select></span>\r\n';
-		document.getElementById('moreArg').innerHTML += abc;  
-
-		var xyz = '<span><input type="number" min="0" placeholder="# of Args of this type" name="num_of_args_input[]" ></td>	 </span><br>\r\n';
-		document.getElementById('moreArg').innerHTML += xyz;  
-	}
-	</script>	
 	<br>	
 	
 
@@ -135,13 +145,19 @@ include 'profSession.php';
 	<textarea name="q_input" required style="resize:none;" rows="7" cols="60" type="text" class="textInput" placeholder="Enter your Question Here"></textarea>
 	<br>
 
-	<!-- Test Case - TextArea -->	
-	<textarea name="tc_input" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Here"></textarea>
+	<!-- Test Case - TextArea //gonna change to array-->	
+	<textarea name="tc_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Here"></textarea>
 
-	<!-- Test Case Answer - TextArea -->
-	<textarea name="tcAns_input" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
-	<br>	
+	<!-- Test Case Answer - TextArea //gonna change to array-->
+	<textarea name="tcAns_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
 	<br>
+
+	<!-- display more Test Case -->	
+	<font color="white" size="3" face="verdana">Add More Test Cases</font>
+	<button class="btnSmall btn-hover btn-block btn-primary" onclick="addOneMoreTestCase_Function()">+</button>	
+	<p id="moreTestCase"></p> 
+	<br>
+
 
 	<!-- Optional - MethodName - form input -->
 	<font color="white" size="3" face="verdana">[Optional] Method Name:</font>
@@ -156,6 +172,8 @@ include 'profSession.php';
 	<br>
 	<input type="reset" class="btn btn-block btn-red-primary">
 	<input type="submit" name="send_question" value="Submit" class="btn btn-hover btn-block btn-green-primary" >
+	
+
 </form>
  
 	<?php //echo $_POST["q_input"]  ?>
@@ -189,6 +207,19 @@ include 'profSession.php';
 		//print_r($_POST['argt_input']);
 		//echo "<pre>";
 
+		//-------------------test cases---------------
+
+		$arr_TC = array();
+		foreach ($_POST['tc_input'] as $tc){
+			array_push($arr_TC, $tc);
+		}
+		
+		//-------------------test cases Answers---------------
+		$arr_TC_Ans = array();
+		foreach ($_POST['tcAns_input'] as $tcAns){
+			array_push($arr_TC_Ans, $tcAns);
+		}
+
 		//JSON data
 		$jsonData = array(
 		'prof' => $_SESSION['p_ucid'],
@@ -197,8 +228,8 @@ include 'profSession.php';
 		'returnType' => $_POST["myRtype"],
 		'argType' => $realTypes, 
 		'quest' => $_POST["q_input"],
-		'testCase' => $_POST["tc_input"],
-		'tcAns' => $_POST["tcAns_input"],
+		//'testCase' => $_POST["tc_input"],
+		//'tcAns' => $_POST["tcAns_input"],
 		'methodName' => $_POST["methodname_input"],
 		'argName' => $_POST["arg_input"] 
 		
