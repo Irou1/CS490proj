@@ -114,9 +114,6 @@ include 'profSession.php';
 	<!--Number of Args -->
 	<font color="white" size="3" face="verdana">Number of Arguments</font>
 
-	<!-- Add One more Arg Type -->
-	<button class="btnSmall btn-hover btn-block btn-primary" onclick="addOneMoreArgType_Function()">+</button>
-
 	<br>		
 
 	<!-- Arg Type - input -->
@@ -133,12 +130,12 @@ include 'profSession.php';
 	<input type="number" min="0" placeholder="# of Args of this type" name="num_of_args_input[]" ></td>	
 	
 	<br>
-	<!-- display more arg types -->	3
+	<!-- Add One more Arg  -->
+	<font color="white" size="3" face="verdana">Add More Arguments</font>
+	<button class="btnSmall btn-hover btn-block btn-primary" onclick="addOneMoreArgType_Function()">+</button>	
 	<p id="moreArg"></p> 
 	<br>
-	<br>	
 	
-
 	<!-- Question - Input -->
 	<font color="white" size="4" face="verdana">Question</font>
 	<br>
@@ -152,7 +149,7 @@ include 'profSession.php';
 	<textarea name="tcAns_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
 	<br>
 
-	<!-- display more Test Case -->	
+	<!-- Add more Test Cases -->	
 	<font color="white" size="3" face="verdana">Add More Test Cases</font>
 	<button class="btnSmall btn-hover btn-block btn-primary" onclick="addOneMoreTestCase_Function()">+</button>	
 	<p id="moreTestCase"></p> 
@@ -213,7 +210,7 @@ include 'profSession.php';
 		foreach ($_POST['tc_input'] as $tc){
 			array_push($arr_TC, $tc);
 		}
-		
+
 		//-------------------test cases Answers---------------
 		$arr_TC_Ans = array();
 		foreach ($_POST['tcAns_input'] as $tcAns){
