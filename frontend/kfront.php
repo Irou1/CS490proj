@@ -134,22 +134,29 @@ if (isset($_POST['login_button'])) {
 .tableBottom {
 color: #333; /* Lighten up font color */
 font-family: Helvetica, Arial, sans-serif; 
-width: 620px;
+width: 620px; 
 border-collapse:
 collapse; border-spacing: 0;
 position: absolute;
 bottom: 0px;
+
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+
 }
 
 #teamTable {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 100%; 
 }
 
 #teamTable td, #teamTable th {
     border: 1px solid #ddd;
     padding: 8px;
+    text-align: center;
     /*background-color: black; 
     color: white;    
     */
@@ -162,7 +169,7 @@ bottom: 0px;
 #teamTable th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: center;
+    /*text-align: center; */
     vertical-align: middle;
     background-color: #0066ff; /* blue*/
     color: white;
