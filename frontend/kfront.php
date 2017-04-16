@@ -44,13 +44,15 @@ session_start();
 
 
 	
-<form method="post" action="kfront.php">
-	<h2>CS490 Login</h1>
+<form method="post" class ="loginForm" action="kfront.php">
+	<h1>CS490 Login</h1>
 	<table>
 		<tr>
+			<!-- <td>UCID:</td> -->
 			<td><input type="text" placeholder="UCID" name="ucid_input" class="textInput"></td>
 		</tr>
 		<tr>
+			<!-- <td>Password:</td> -->
 			<td><input type="password" placeholder="Password" name="password_input" class="textInput"></td>
 		</tr>
 		<tr>
@@ -123,25 +125,65 @@ if (isset($_POST['login_button'])) {
 } 
 
 ?>
-</center>
+
 
 
 
 <?php //testing   ?>
+<style>
+.tableBottom {
+color: #333; /* Lighten up font color */
+font-family: Helvetica, Arial, sans-serif; 
+width: 620px;
+border-collapse:
+collapse; border-spacing: 0;
+position: absolute;
+bottom: 0px;
+}
 
-<table class="tableBottom">
-  <tr>
-    <th>Front</th>
-    <th>Middle</th>
-    <th>Backend</th>
-  </tr>
-  <tr>
-    <td>Kenneth Aparicio</td>
-    <td>Oscar Rodriguez</td>
-    <td>Edward Martin</td>
-  </tr>
-</table>
+#teamTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+#teamTable td, #teamTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    /*background-color: black; 
+    color: white;    
+    */
+}
+
+#teamTable tr:nth-child(even){background-color: #f2f2f2;} 
+
+#teamTable tr:hover {background-color: #c2c2d6;}
+
+#teamTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #0066ff; /* blue*/
+    color: white;
+}
+</style>
+
+
+	<table id="teamTable" class="tableBottom" style="width:28%" >
+	  <tr>
+	    <th>Front End</th>
+	    <th>Middle</th>
+	    <th>Back End</th>
+	  </tr>
+	  <tr>
+	    <td>Kenneth Aparicio</td>
+	    <td>Oscar Rodriguez</td>
+	    <td>Edward Martin</td>
+	  </tr>
+	</table>
+
+</center>
 
 </body>
 </html>
