@@ -3,7 +3,7 @@ body{
 	  margin: 0px;
 	  background-image: url('aw.jpg');
 	  background-repeat: no-repeat;
-      background-attachment: fixed;
+    background-attachment: fixed;
 
 }
 h1 {
@@ -108,12 +108,29 @@ button:hover {
 	width:100%;
 	padding: 5px;
 }
-form{
-	/*height: 80%
-	width: 10%; */
+
+.loginForm {
+  margin-top:180px; 
+  width: 40%;
+  padding: 30px;
+  margin: 5x auto;
+
+}
+
+.textLoginInput{
+  margin-top: 2px;
+  height: 28px;
+  border: 2px solid #5E6E66;
+  font-size: 16px;
+  padding: 1px;
+  width: 100%;
+}
+
+.sizeForm{
 	padding: 30px;
 	margin: 5x auto;
 }
+
 .textInput{
 	margin-top: 2px;
 	/* height: 100px;
@@ -179,3 +196,14 @@ li a:hover:not(.active) {
 #left{float:left;width:50%;}
 #right{float:right;width:50%;} 
 
+.dividerA{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+.dividerB{
+    width:8px;
+    height:auto;
+    display:inline-block;
+}

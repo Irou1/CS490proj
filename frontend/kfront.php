@@ -29,7 +29,8 @@ session_start();
 <head>
 	<meta charset="UTF-8">
 	<title>CS490 Proj</title>
-	<link rel="stylesheet" type="text/css" href="login.css">
+	<!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
+	<link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 <body> 
@@ -49,11 +50,11 @@ session_start();
 	<table>
 		<tr>
 			<!-- <td>UCID:</td> -->
-			<td><input type="text" placeholder="UCID" name="ucid_input" class="textInput"></td>
+			<td><input type="text" placeholder="UCID" name="ucid_input" class="textLoginInput"></td>
 		</tr>
 		<tr>
 			<!-- <td>Password:</td> -->
-			<td><input type="password" placeholder="Password" name="password_input" class="textInput"></td>
+			<td><input type="password" placeholder="Password" name="password_input" class="textLoginInput"></td>
 		</tr>
 		<tr>
 			<td><button type="submit" name="login_button" class="btn btn-block btn-primary" >Login</button></td>
@@ -167,7 +168,6 @@ bottom: 0px;
     color: white;
 }
 </style>
-
 <table id="teamTable" class="tableBottom" style="width:28%" >
   <tr>
     <th>Front End</th>
@@ -180,7 +180,7 @@ bottom: 0px;
     <td>Edward Martin</td>
   </tr>
 </table>
-
 </center>
+
 </body>
 </html>

@@ -22,7 +22,8 @@ include 'profSession.php';
 <head>
 	<meta charset="UTF-8">
 	<title>CS490 Prof Logged In</title>
-	<link rel="stylesheet" type="text/css" href="qbstyle.css">
+	<!-- <link rel="stylesheet" type="text/css" href="qbstyle.css"> -->
+	<link rel="stylesheet" type="text/css" href="style.css">
 
 
 <ul>
