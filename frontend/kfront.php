@@ -121,7 +121,6 @@ if (isset($_POST['login_button'])) {
 		//echo "no session";
 		$_SESSION['message'] = "Username/password combination incorrect";
 	}
-
 } 
 
 ?>
@@ -169,21 +168,19 @@ bottom: 0px;
 }
 </style>
 
-
-	<table id="teamTable" class="tableBottom" style="width:28%" >
-	  <tr>
-	    <th>Front End</th>
-	    <th>Middle</th>
-	    <th>Back End</th>
-	  </tr>
-	  <tr>
-	    <td>Kenneth Aparicio</td>
-	    <td>Oscar Rodriguez</td>
-	    <td>Edward Martin</td>
-	  </tr>
-	</table>
+<table id="teamTable" class="tableBottom" style="width:28%" >
+  <tr>
+    <th>Front End</th>
+    <th>Middle</th>
+    <th>Back End</th>
+  </tr>
+  <tr>
+    <td>Kenneth Aparicio</td>
+    <td>Oscar Rodriguez</td>
+    <td>Edward Martin</td>
+  </tr>
+</table>
 
 </center>
-
 </body>
 </html>
