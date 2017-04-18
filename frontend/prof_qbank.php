@@ -44,7 +44,7 @@ include 'profSession.php';
 		var abcd ='<span><textarea name="tc_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Here"></textarea></span>\r\n';
 		document.getElementById('moreTestCase').innerHTML += abcd;  
 
-		var xyzz = '<span>	<textarea name="tcAns_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea></span><br>\r\n';
+		var xyzz = '<span>	<textarea name="tc_ans_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea></span><br>\r\n';
 		document.getElementById('moreTestCase').innerHTML += xyzz;  
 	}	
 
@@ -147,7 +147,7 @@ include 'profSession.php';
 	<textarea name="tc_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Here"></textarea>
 
 	<!-- Test Case Answer - TextArea //gonna change to array-->
-	<textarea name="tcAns_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
+	<textarea name="tc_ans_input[]" style="resize:none;" rows="4" cols="29" type="text" class="textInput" placeholder="Test Case Answer"></textarea>
 	<br>
 
 	<!-- Add more Test Cases -->	
@@ -208,15 +208,31 @@ include 'profSession.php';
 		//-------------------test cases---------------
 
 		$arr_TC = array();
-		foreach ($_POST['tc_input'] as $tc){
-			array_push($arr_TC, $tc);
+		foreach ($_POST['tc_input'] as $tc_in){
+			array_push($arr_TC, $tc_in);
 		}
+
+		$realTestCases="";
+		foreach ($arr_TC as $tc){
+			$realTestCases .= $tc . '|';
+		
+		} 
+		$realTestCases = trim($realTestCases, '|');
+
 
 		//-------------------test cases Answers---------------
 		$arr_TC_Ans = array();
-		foreach ($_POST['tcAns_input'] as $tcAns){
-			array_push($arr_TC_Ans, $tcAns);
+		foreach ($_POST['tc_ans_input'] as $tc_ans_in){
+			array_push($arr_TC_Ans, $tc_ans_in);
 		}
+
+		$realTestCasesAns="";
+		foreach ($arr_TC_Ans as $tc_ans){
+			$realTestCasesAns .= $tc_ans . '|';
+		
+		} 
+		$realTestCasesAns = trim($realTestCasesAns, '|');
+
 
 		//JSON data
 		$jsonData = array(
@@ -226,7 +242,9 @@ include 'profSession.php';
 		'returnType' => $_POST["myRtype"],
 		'argType' => $realTypes, 
 		'quest' => $_POST["q_input"],
+		'testCase' => $realTestCases,
 		//'testCase' => $_POST["tc_input"],
+		'tcAns' => $realTestCasesAns,
 		//'tcAns' => $_POST["tcAns_input"],
 		'methodName' => $_POST["methodname_input"],
 		'argName' => $_POST["arg_input"] 
