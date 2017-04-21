@@ -41,7 +41,8 @@ include 'profSession.php';
 	}
 ?>
 <center>
-	<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
+	<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </font><br>
+	<!-- <h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1> -->
 
 <form>
 	<br>

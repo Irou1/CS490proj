@@ -30,35 +30,11 @@ include 'studentSession.php';
 </ul>
 </head>
 <body>
-
-<?php
-   /*
-   //redirect to test page
-   $selectedOldExam = $_POST['oldTestList'][0];
-
+	<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </font><br>
+	<font color="white" size="6" face="verdana"> Viewing <?php echo ucfirst($_SESSION['myOldTest']) ?> </font><br><br>
+	
+  <?php
   
-   if($selectedExam){ 
-      header("Location: https://web.njit.edu/~ka279/cs490/rc/student_old_test_page.php?oldexam=$selectedOldExam");
-      exit;
-   }else{
-      echo "Unable to Load test";
-   }
-   */
-?>
-
-
-       <h3>Previous Test Results</h3>
-	      <?php
-
-	    //GET all current test's questions
-
-      $sd = $_SESSION['s_ucid'];  //$exam = 'someTest'; 
-      //echo $studentName;
-
-
-      //$url = "https://web.njit.edu/~or32/rc/getgrade.php";
-      
-
   //JSON data
   $jsonData = array(
   //'flag' => 'login',
@@ -66,6 +42,7 @@ include 'studentSession.php';
   );
   
   //MID URL
+  //$url = "https://web.njit.edu/~or32/rc/getgrade.php";
   $url = "https://web.njit.edu/~em244/CS490/getFirstGrade.php";
 
   //initiate cURL
@@ -91,12 +68,13 @@ include 'studentSession.php';
   $resultz = json_decode($result, 1); //json decode
 
 
-
   //display resultz - json array
   print('<pre>');
   ?>
   
-  <h3><?php print_r ($resultz); ?></h3>
+  <h3>
+  <?php print_r ($resultz); ?>	
+  </h3>
 
   <?php
   print('</pre>');

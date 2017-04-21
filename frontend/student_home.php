@@ -41,7 +41,8 @@ include 'studentSession.php';
 
 <body>
 <center>
-	<h1>Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1>
+	<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </font><br><br>
+	<!-- <h1>Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1> -->
 	
 
   <?php //---------Student take a test-------------------?>
@@ -141,7 +142,7 @@ include 'studentSession.php';
 
     <div id="showOldTestDiv" style="display:none;"> <!-- hidden -->
     
-    <form method="post" action="/~ka279/cs490/rc/student_view_take_test_next2_see_grade.php"> 
+    <form method="post" action="/~ka279/cs490/rc/student_see_old_test_and_grade.php"> 
       <font color="white" size="3" face="verdana">List of Tests:</font>
        <?php
        foreach( $studentOldTests["examName"] as $oldtest){
@@ -152,7 +153,9 @@ include 'studentSession.php';
         echo "<font color=DarkBlue>$oldtest</font>";
         echo "</p>";
           }
+        $_SESSION['myOldTest'] = $oldtest;  
        ?>         
+
         <br> 
        <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedOldExam" value="View Grade for this Test">
     </form>
