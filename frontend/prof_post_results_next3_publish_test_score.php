@@ -23,7 +23,7 @@ include 'profSession.php';
 	<title>CS490 Prof Publish Student Test Score Redirecting</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 <ul>
-  <li><a class="active" href="student_home.php">Home</a></li>
+  <li><a class="active" href="prof_home.php">Home</a></li>
   <li style="float:right"><a href="logout.php">LogOut</a></li>
 </ul>	
 </head>

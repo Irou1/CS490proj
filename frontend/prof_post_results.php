@@ -76,7 +76,7 @@ function showStudentsDiv(){
 
     <div id="studentDivSpace" style="display:none;">
     
-    <form method="post" action="prof_get_sTest.php"> 
+    <form method="post" action="prof_post_results_next1_get_sTest.php"> 
     	<h3>List of Students</h3>
        <?php
        foreach($students["username"] as $s){

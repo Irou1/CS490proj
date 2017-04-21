@@ -22,7 +22,7 @@ include 'profSession.php';
    <title>CS490 Prof get Student Test Page</title>
    <link rel="stylesheet" type="text/css" href="style.css">
 <ul>
-  <li><a class="active" href="student_home.php">Home</a></li>
+  <li><a class="active" href="prof_home.php">Home</a></li>
   <li style="float:right"><a href="logout.php">LogOut</a></li>
 </ul>
 </head>
@@ -99,13 +99,13 @@ include 'profSession.php';
 
     <div id="studentTestDivSpace" style="display:none;">
     
-    <form method="post" action="prof_publish_test_score.php"> 
+    <form method="post" action="prof_post_results_next3_publish_test_score.php"> 
         <h3>List of Tests which <?php echo $student ?> took</h3>
        <?php
        foreach($testz["exam"] as $testNamez){
 
         echo "<p>";
-        echo "<input type='radio' name=testNameList[]' value='$testNamez'>"; //Test - radio button
+        echo "<input type='radio' name='testNameList[]' value='$testNamez'>"; //Test - radio button
         echo "<font color=DarkBlue>$testNamez</font>";
         echo "</p>";
           }

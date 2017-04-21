@@ -32,7 +32,7 @@ include 'studentSession.php';
 
   
    if($selectedExam){ 
-      header("Location: https://web.njit.edu/~ka279/cs490/rc/student_test_page.php?exam=$selectedExam");
+      header("Location: https://web.njit.edu/~ka279/cs490/rc/student_take_test_next1.php?exam=$selectedExam");
       exit;
    }else{
       echo "Unable to Load test";

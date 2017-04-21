@@ -33,7 +33,7 @@ include 'profSession.php';
 
   
    if($selectedExam){ 
-      header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_test_page.php?exam=$selectedExam");
+      header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_edit_test_next.php?exam=$selectedExam");
       exit;
    }else{
    		header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_manage_test.php");

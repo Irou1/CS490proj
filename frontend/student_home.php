@@ -74,10 +74,12 @@ include 'studentSession.php';
     </form>
     </div>
 
+
+
     <?php 
     //------Student check grade, he/she took--------------WORKING ON IT--------------
-    /*
-    <?php
+   
+  
     //JSON data
     $jsonData = array(
     'studentName' => $_SESSION['s_ucid']
@@ -110,26 +112,28 @@ include 'studentSession.php';
     
     //echo gettype ( $result );   //get var type 
 
-    echo $result;         //testing - echo middle 
+    //echo $result;         //testing - echo middle 
 
     $studentOldTests = json_decode($result, 1); //json decode
 
     //display resultz - json array
-    print('<pre>');
-    print_r ($studentOldTests);
-    print('</pre>');  
+    //print('<pre>');
+    //print_r ($studentOldTests);
+    //print('</pre>');  
 
-    ------------?>
+    //-------testing-----
 
-  */?>
+  ?>
 
-  <?php //---------Student old test - see Grade--------
-  /*
+  <?php //---------Student old test - see Grade-------- ?>
+  
   <div id="wrapper">
 
     <div id="topbox">
+    <br>
+    <br>
     <font color="white" size="3" face="verdana">Show Tests I Took:</font><br>
-    <button type="button" class="btn btn-hover btn-block btn-green-primary" onclick="showOldTestDiv()">See current grades</button>  
+    <button type="button" class="btn btn-hover btn-block btn-primary" onclick="showOldTestDiv()">See current grades</button>  
     <br>
     </div>
 
@@ -137,10 +141,10 @@ include 'studentSession.php';
 
     <div id="showOldTestDiv" style="display:none;"> <!-- hidden -->
     
-    <form method="post" action="/~ka279/cs490/rc/student_view_old_test.php"> 
+    <form method="post" action="/~ka279/cs490/rc/student_view_take_test_next2_see_grade.php"> 
       <font color="white" size="3" face="verdana">List of Tests:</font>
        <?php
-       foreach( json_decode($result) as $oldtest){
+       foreach( $studentOldTests["examName"] as $oldtest){
         //echo $test;
 
         echo "<p>";
@@ -153,9 +157,12 @@ include 'studentSession.php';
        <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedOldExam" value="View Grade for this Test">
     </form>
     </div>
-  */ ?>
+  
   <br>
+  <?php /* //old stuff
     <input type="button" value="View Grade" class="btn btn-hover btn-block btn-orange-primary" onclick="window.location.href='s_view_grade.php'" />
+    */
+  ?>
 
 
 </center> 
