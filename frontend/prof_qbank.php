@@ -57,7 +57,7 @@ include 'profSession.php';
 	if ( isset($_POST['send_question']) ) {
 		sendQ(); //run php - send question
 		$_SESSION['message'] = "Question added to Question Bank!";
-		echo "<div id='error_msg'>".$_SESSION['message']."</div>";
+		echo "<div id='blue_msg'>".$_SESSION['message']."</div>";
 		unset($_SESSION['message']);
 	}
 ?>

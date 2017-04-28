@@ -36,7 +36,7 @@ include 'profSession.php';
 	if (isset($_GET['BURN'])) { //display test deleted when activated
 		burnFunction(); //run php delete test function
 		$_SESSION['message'] = "Test successfully deleted!";
-		echo "<div id='error_msg'>".$_SESSION['message']."</div>";
+		echo "<div id='red_msg'>".$_SESSION['message']."</div>";
 		unset($_SESSION['message']);
 	}
 ?>

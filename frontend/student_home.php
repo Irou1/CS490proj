@@ -42,8 +42,7 @@ include 'studentSession.php';
 <body>
 <center>
 	<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </font><br><br>
-	<!-- <h1>Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1> -->
-	
+	<!-- <h1>Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1> -->	
 
   <?php //---------Student take a test-------------------?>
   <div id="wrapper">
@@ -59,7 +58,6 @@ include 'studentSession.php';
     <div id="availableTests" style="display:none;"> <!-- hidden -->
     
     <form method="post" action="/~ka279/cs490/final/student_take_test.php"> 
-      <font color="white" size="3" face="verdana">List of Tests:</font>
        <?php
        foreach(json_decode($tests) as $test){
        	//echo $test;
@@ -143,8 +141,12 @@ include 'studentSession.php';
     <div id="showOldTestDiv" style="display:none;"> <!-- hidden -->
     
     <form method="post" action="/~ka279/cs490/final/student_see_old_test_and_grade.php"> 
-      <font color="white" size="3" face="verdana">List of Tests:</font>
-       <?php
+      <br>
+      <br>
+    <?php
+
+      if (!empty($studentOldTests)) {
+        echo "<font color='white' size='3' face='verdana'>List of Tests:</font>";
        foreach( $studentOldTests["examName"] as $oldtest){
         //echo $test;
 
@@ -152,12 +154,22 @@ include 'studentSession.php';
         echo "<input type='radio' name='oldTestList[]' value='$oldtest' required>"; //Test - radio button
         echo "<font color=DarkBlue>$oldtest</font>";
         echo "</p>";
-          }
+          } 
         $_SESSION['myOldTest'] = $oldtest;  
-       ?>         
+        ?>
+        <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedOldExam" value="View Grade for this Test">
+        <br>
 
-        <br> 
-       <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedOldExam" value="View Grade for this Test">
+        <?php
+      }
+      else{ 
+        //echo "<br>" . "<br> " . "<font color='red' size='3' face='verdana'>You have not taken any Tests yet</font>" . "<br>";
+        $_SESSION['message'] = "You have not taken any Tests yet";
+        echo "<div id='red_msg'>".$_SESSION['message']."</div>";
+        unset($_SESSION['message']);        
+
+      }
+       ?>         
     </form>
     </div>
   

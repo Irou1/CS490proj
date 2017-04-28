@@ -205,7 +205,18 @@ li a:hover:not(.active) {
 .active {
     background-color: #001f4d;
 }
-#error_msg{
+#red_msg{
+  width: 50%;  
+  margin: 5px auto; 
+  height: 30px; 
+  border: 1px solid #003380; 
+  background: #e60000; 
+  color: #FFFFFF;
+  text-align: center;
+  padding-top: 10px;
+}
+
+#blue_msg{
   width: 50%;  
   margin: 5px auto; 
   height: 30px; 
@@ -215,7 +226,6 @@ li a:hover:not(.active) {
   text-align: center;
   padding-top: 10px;
 }
-
 
 .dividerA{
     width:5px;

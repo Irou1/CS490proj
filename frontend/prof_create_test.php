@@ -35,7 +35,7 @@ include 'profSession.php';
 		if ( isset($_POST['create_test']) ) {
 			createTest(); //run php - send test
 			$_SESSION['message'] = "Test Created!";
-			echo "<div id='error_msg'>".$_SESSION['message']."</div>";
+			echo "<div id='blue_msg'>".$_SESSION['message']."</div>";
 			unset($_SESSION['message']);
 		}
 	?>

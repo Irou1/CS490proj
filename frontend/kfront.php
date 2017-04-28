@@ -32,40 +32,6 @@ session_start();
 	<!-- <link rel="stylesheet" type="text/css" href="login.css"> -->
 	<link rel="stylesheet" type="text/css" href="style.css">
 
-</head>
-<body> 
-<?php
-	if (isset($_SESSION['message'])) {
-		echo "<div id='error_msg'>".$_SESSION['message']."</div>";
-		unset($_SESSION['message']);
-	}
-?>
-<center>
-
-
-
-	
-<form method="post" class ="loginForm" action="kfront.php">
-	<h1>CS490 Login</h1>
-	<table>
-		<tr>
-			<!-- <td>UCID:</td> -->
-			<td><input type="text" placeholder="UCID" name="ucid_input" class="textLoginInput"></td>
-		</tr>
-		<tr>
-			<!-- <td>Password:</td> -->
-			<td><input type="password" placeholder="Password" name="password_input" class="textLoginInput"></td>
-		</tr>
-		<tr>
-			<td><button type="submit" name="login_button" class="btn btn-block btn-primary" >Login</button></td>
-		</tr>
-	</table>
-</form>
-
-
-
-
-
 <?php
 //if(isset($_POST['ucid_input']) && isset($_POST['password_input'])){
 if (isset($_POST['login_button'])) {
@@ -123,15 +89,38 @@ if (isset($_POST['login_button'])) {
 	}elseif ($resultz[0] == 0 && $resultz[1] == 0) {
 		//echo "no session";
 		$_SESSION['message'] = "Username/password combination incorrect";
+		echo "<div id='red_msg'>".$_SESSION['message']."</div>";
+		unset($_SESSION['message']);		
+
 	}
 } 
 
 ?>
 
+</head>
+
+<body> 
+<center>
+
+<form method="post" class ="loginForm" action="kfront.php">
+	<h1>CS490 Login</h1>
+	<table>
+		<tr>
+			<!-- <td>UCID:</td> -->
+			<td><input type="text" placeholder="UCID" name="ucid_input" class="textLoginInput"></td>
+		</tr>
+		<tr>
+			<!-- <td>Password:</td> -->
+			<td><input type="password" placeholder="Password" name="password_input" class="textLoginInput"></td>
+		</tr>
+		<tr>
+			<td><button type="submit" name="login_button" class="btn btn-block btn-primary" >Login</button></td>
+		</tr>
+	</table>
+</form>
 
 
-
-<?php //testing   ?>
+<?php //Team Table  ?>
 <style>
 .tableBottom {
 color: #333; /* Lighten up font color */
