@@ -32,10 +32,10 @@ include 'profSession.php';
 
   
    if($selectedStudent){ 
-      header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_post_results_next2_get_sTest_page.php?student=$selectedStudent");
+      header("Location: https://web.njit.edu/~ka279/cs490/final/prof_post_results_next2_get_sTest_page.php?student=$selectedStudent");
       exit;
    }else{
-   	  header("Location: https://web.njit.edu/~ka279/cs490/rc/prof_post_results.php");
+   	  header("Location: https://web.njit.edu/~ka279/cs490/final/prof_post_results.php");
 
       //echo "Unable to Load Student's test";
    }

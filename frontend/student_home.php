@@ -58,7 +58,7 @@ include 'studentSession.php';
 
     <div id="availableTests" style="display:none;"> <!-- hidden -->
     
-    <form method="post" action="/~ka279/cs490/rc/student_take_test.php"> 
+    <form method="post" action="/~ka279/cs490/final/student_take_test.php"> 
       <font color="white" size="3" face="verdana">List of Tests:</font>
        <?php
        foreach(json_decode($tests) as $test){
@@ -142,7 +142,7 @@ include 'studentSession.php';
 
     <div id="showOldTestDiv" style="display:none;"> <!-- hidden -->
     
-    <form method="post" action="/~ka279/cs490/rc/student_see_old_test_and_grade.php"> 
+    <form method="post" action="/~ka279/cs490/final/student_see_old_test_and_grade.php"> 
       <font color="white" size="3" face="verdana">List of Tests:</font>
        <?php
        foreach( $studentOldTests["examName"] as $oldtest){

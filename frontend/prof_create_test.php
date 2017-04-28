@@ -87,7 +87,7 @@ include 'profSession.php';
 			<input type='checkbox' name='questionList[]' value="<?php echo $resultz[$i]; ?>"> 
 			<textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
 			<!--Points assigned testing  -->
-			<input type="number" min="0" placeholder="Pts" maxlength="2" size="1">
+			<input type="number" min="0" name ='pointsAssigned[]' placeholder="Pts" maxlength="2" size="1">
 
 			<br>
 			<?php }  //for loop - curly brace?> 
@@ -96,13 +96,8 @@ include 'profSession.php';
 //Add Test questions to X Test aka Create Test
 
 	function createTest() {
-		//JSON data
+		//OLD WAY - JSON data
 		/*
-		$jsonData = array(
-		'prof' => $_SESSION['p_ucid'],
-		'q' => $_POST[""],
-
-		); */
 		$jsonData[0] = $_POST['examName'];
       	$x = 1;
       	
@@ -110,7 +105,41 @@ include 'profSession.php';
         	$jsonData[$x] = $value;
 	 		$x++;
       	} 
-		
+		*/
+
+		//-------------------Sending Questions --------------------------
+		$q_arr = array();
+		foreach ($_POST['questionList'] as $qSelected){
+			array_push($q_arr, $qSelected);
+		}
+
+		$realQuestions="";
+		foreach ($q_arr as $q){
+			$realQuestions .= $q . '|';
+		} 
+		$realQuestions = trim($realQuestions, '|');
+
+		//-------------------Sending Points assigned to question---------------
+		$pts_arr = array();
+		foreach ($_POST['pointsAssigned'] as $ptsInput){
+			array_push($pts_arr, $ptsInput);
+		}
+
+		$realPoints="";
+		foreach ($pts_arr as $pts){
+			$realPoints .= $pts . ',';
+		} 
+		$realPoints = trim($realPoints, ',');
+
+		//JSON data
+		$jsonData = array(
+		'examName' => $_POST['examName'],
+		'questions' => $realQuestions,
+		'points' => $realPoints
+		); 
+
+
+
 		//MID URL
 		$url = "https://web.njit.edu/~or32/rc/sendexam.php";
 

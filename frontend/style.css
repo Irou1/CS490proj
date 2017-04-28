@@ -216,9 +216,6 @@ li a:hover:not(.active) {
   padding-top: 10px;
 }
 
-#container{width:100%;}
-#left{float:left;width:50%;}
-#right{float:right;width:50%;} 
 
 .dividerA{
     width:5px;
@@ -231,3 +228,20 @@ li a:hover:not(.active) {
     height:auto;
     display:inline-block;
 }
+
+div.master {
+    height: 200px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: none;
+    margin-bottom: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+div.col {
+    float: left;
+    width: 25%;
+}
+

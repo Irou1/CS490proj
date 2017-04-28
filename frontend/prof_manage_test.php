@@ -71,9 +71,12 @@ include 'profSession.php';
        <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedExam" value="Edit">
     </form>
      </div>
-
+    
+    <?php /*
     <h4>See Previous results</h4>
     <button type="button" class="btn btn-hover btn-block btn-green-primary" onclick="showGradeDiv()">See current grades</button>
+
+    */?>
 
 
 <body>

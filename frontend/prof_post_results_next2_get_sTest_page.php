@@ -99,7 +99,7 @@ include 'profSession.php';
 
     <div id="studentTestDivSpace" style="display:none;">
     
-    <form method="post" action="prof_post_results_next3_publish_test_score.php"> 
+    <form method="post" action="prof_post_results_next3a_publish_test_score.php"> 
         <h3>List of Tests which <?php echo $student ?> took</h3>
        <?php
        foreach($testz["exam"] as $testNamez){

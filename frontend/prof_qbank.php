@@ -253,6 +253,7 @@ include 'profSession.php';
 		
 		//MID URL
 		$url = "https://web.njit.edu/~or32/rc/sendtask.php";
+	
 
 		//initiate cURL
 		$ch = curl_init($url);

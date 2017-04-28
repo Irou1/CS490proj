@@ -3,7 +3,7 @@ Kenneth Aparicio
 Front End
 CS490
 
-Student -> Home -> [View Old Test + Feed Back] 
+Prof -> Home -> Post Results -> Prof Get Student Test -> Prof get student Test page -> [Prof Publish Test Score]
  -->
 
  <?php
@@ -12,78 +12,91 @@ include 'showerrors.php';
  
 //start session
 session_start();
-include 'studentSession.php';
+include 'profSession.php';
  ?>
 
 
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>CS490 Student See Test Grade</title>
+	<title>CS490 Prof Publish Student Test Score Redirecting</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="studentscript.js"></script>
 <ul>
-  <li><a class="active" href="student_home.php">Home</a></li>
+  <li><a class="active" href="prof_home.php">Home</a></li>
   <li style="float:right"><a href="logout.php">LogOut</a></li>
-</ul>
+</ul>	
+
+
+
+<center>
+<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
+<h1>Thank You for grading <?php echo ucfirst($_SESSION['studentName']) ?> </h1>
+</center>
+
+<?php
+
+   $selectedStudentTest = $_POST['testNameList'][0];
+ 
+   //echo $selectedStudentTest;
+   //echo "<br>";
+
+?>
+
+<?php
+
+	//JSON data
+	$jsonData = array(
+	'studentName' => $_SESSION['studentName'],
+	'examName' => $selectedStudentTest
+	//'flag' => 1
+
+	);
+
+
+	//print_r($jsonData); 		//Testing - printing all jsonData****
+    //echo "<br>";
+	
+	
+	//MID URL
+	$url = "https://web.njit.edu/~or32/rc/changeviewflag.php";
+	//$url = "https://web.njit.edu/~em244/CS490/changeExamStatus.php";
+
+	//initiate cURL
+	$ch = curl_init($url);
+	
+	//Tell cURL that we want to send a POST request
+	curl_setopt($ch, CURLOPT_POST, true);
+	
+	//Attach our encoded JSON string to the POST fields
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+	
+	//returns $url stuff
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	
+	 //Execute the request
+	$result = curl_exec($ch);
+	
+	//close cURL 
+	curl_close($ch);
+	
+	//echo gettype ( $result );		//get var type 
+
+	//echo $result; 				//testing - echo middle 
+
+	$resultz = json_decode($result, 1);	//json decode
+
+	//display resultz - json array
+	//print('<pre>');
+	//print_r ($resultz);
+	//print('</pre>');
+	
+
+?>
 </head>
+
 <body>
-  <center>
-	<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </font><br>
-	<font color="white" size="6" face="verdana"> Viewing Graded Exam: <?php echo ucfirst($_SESSION['myOldTest']) ?> </font><br><br>
-	</center>
-
-  <?php
-  
-  //JSON data
-  $jsonData = array(
-  //'flag' => 'login',
-  'studentName' => $_SESSION['s_ucid']
-  );
-  
-  //MID URL
-  //$url = "https://web.njit.edu/~or32/rc/getgrade.php";
-  $url = "https://web.njit.edu/~em244/CS490/getFirstGrade.php";
-
-  //initiate cURL
-  $ch = curl_init($url);
-  
-  //Tell cURL that we want to send a POST request
-  curl_setopt($ch, CURLOPT_POST, true);
-  
-  //Attach our encoded JSON string to the POST fields
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-  
-  //returns $url stuff
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  
-   //Execute the request
-  $result = curl_exec($ch);
-  
-  //close cURL 
-  curl_close($ch);
-  
-  //echo gettype ( $result );   //get var type 
-
-  $resultz = json_decode($result, 1); //json decode
-
-
-  //display resultz - json array
-  print('<pre>');
-  ?>
-  
-  <h3>
-  <?php print_r ($resultz); ?>	
-  </h3>
-
-  <?php
-  print('</pre>');
-
- ?>
-  
-<?php //----------------------------------------------------------------------------------------testing ?>
+<?php //-------------------------testing ----showing student's test ---edit feedback and edit points ?>
 
 <div class ="master">
 
@@ -112,9 +125,11 @@ include 'studentSession.php';
 
   <div class="col">
   <?php
+  $sn = ucfirst($_SESSION['studentName']);
+
   $sAns = array("answer1", "answer2", "answer3", "answer4");
   foreach ($sAns as $sa) {
-    echo "<font color='white' size='3' face='verdana'>Your Answer</font>" . "<br>";
+    echo "<font color='white' size='3' face='verdana'>$sn's Answer </font>" . "<br>";
   ?>
 
   <textarea type="text" readonly class="answer" name="a" rows="7" cols="36" style="resize:none;" ><?php echo $sa; ?></textarea>
@@ -136,7 +151,7 @@ include 'studentSession.php';
 
   ?>
 
-  <textarea type="text" readonly class="f" rows="7" cols="36" style="resize:none;" ><?php echo $f; ?></textarea>
+  <textarea type="text" class="f" rows="7" cols="36" style="resize:none;" ><?php echo $f; ?></textarea>
   <br>
   <br>
 
@@ -166,7 +181,7 @@ include 'studentSession.php';
   */
   ?>
 
-  <input type="text" readonly class="p" style="width: 60px" value="<?php echo $pts . '/' . '10' . 'pts'; ?>" maxlength="10" size="1">
+  <input type="number" min="0" class="p" style="width: 60px" value="<?php echo $pts; ?>" maxlength="2" size="1">
   <br><br><br><br><br><br><br><br>
 
   <?php
@@ -174,7 +189,7 @@ include 'studentSession.php';
   ?>
   </div>  
 
-</div>
+</div>  
 
 
 
