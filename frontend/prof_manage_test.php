@@ -55,7 +55,7 @@ include 'profSession.php';
 
     <div id="availableTests" style="display:none;">
     
-    <form method="post" action="/~ka279/cs490/rc/prof_edit_test.php"> 
+    <form method="post" action="/~ka279/cs490/final/prof_edit_test.php"> 
     	<h3>List of Tests</h3>
        <?php
        foreach(json_decode($tests) as $test){

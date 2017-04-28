@@ -87,7 +87,7 @@ include 'profSession.php';
 			<input type='checkbox' name='questionList[]' value="<?php echo $resultz[$i]; ?>"> 
 			<textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
 			<!--Points assigned testing  -->
-			<input type="number" min="0" name ='pointsAssigned[]' placeholder="Pts" maxlength="2" size="1">
+			<input type="number" min="0" style="width: 60px" name ='pointsAssigned[]' placeholder="Pts" maxlength="2" size="1">
 
 			<br>
 			<?php }  //for loop - curly brace?> 

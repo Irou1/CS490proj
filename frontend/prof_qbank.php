@@ -74,7 +74,7 @@ include 'profSession.php';
 	<!-- Category options -->
 	<font color="white" size="3" face="verdana">Category:</font>
 		<select name="myCategory" id="myCategory" required>
-		<option value="">Please select ...</option>
+		<option value="nada">Please select ...</option>
 		<option value="array">Arrays</option>
 		<option value="loop">Loops</option>
 		<option value="method">Methods</option>
@@ -88,7 +88,7 @@ include 'profSession.php';
 	<!-- Diff options -->
 	<font color="white" size="3" face="verdana">Difficulty:</font>   <!-- tab space is &emsp; -->
 		<select name="myDiff" id="myDiff" required>
-		<option value="">Please select ...</option>
+		<option value="nada">Please select ...</option>
 		<option value="0">Easy</option>
 		<option value="1">Medium</option>
 		<option value="2">Hard</option>
@@ -98,7 +98,7 @@ include 'profSession.php';
 	<!-- Return type options -->
 	<font color="white" size="3" face="verdana">Return Type:</font>
 	<select name="myRtype" id="myRtype" required>
-		<option value="">Please select ...</option>
+		<option value="nada">Please select ...</option>
 		<option value="int">int</option>
 		<option value="double">double</option>
 		<option value="float">float</option>
@@ -119,7 +119,7 @@ include 'profSession.php';
 
 	<!-- Arg Type - input -->
 	<select name="argt_input[]">
-		<option value="">Please select ...</option>
+		<option value="nada">Please select ...</option>
 		<option value="int">int</option>
 		<option value="double">double</option>
 		<option value="float">float</option>
@@ -199,11 +199,7 @@ include 'profSession.php';
 			$cnt += 1;
 		} 
 		$realTypes = trim($realTypes, ',');
-		//echo $realTypes;
-
-		//echo "<pre>";
-		//print_r($_POST['argt_input']);
-		//echo "<pre>";
+		//echo $realTypes; 
 
 		//-------------------test cases---------------
 
@@ -232,22 +228,23 @@ include 'profSession.php';
 		
 		} 
 		$realTestCasesAns = trim($realTestCasesAns, '|');
+		?>
 
-
+<?php
 		//JSON data
 		$jsonData = array(
 		'prof' => $_SESSION['p_ucid'],
-		'cat' => $_POST["myCategory"],
-		'diff' => $_POST["myDiff"],
-		'returnType' => $_POST["myRtype"],
+		'cat' => $_POST['myCategory'],
+		'diff' => $_POST['myDiff'],
+		'returnType' => $_POST['myRtype'],
 		'argType' => $realTypes, 
-		'quest' => $_POST["q_input"],
+		'quest' => $_POST['q_input'],
 		'testCase' => $realTestCases,
-		//'testCase' => $_POST["tc_input"],
+		//'testCase' => $_POST['tc_input'],
 		'tcAns' => $realTestCasesAns,
-		//'tcAns' => $_POST["tcAns_input"],
-		'methodName' => $_POST["methodname_input"],
-		'argName' => $_POST["arg_input"] 
+		//'tcAns' => $_POST['tcAns_input'],
+		'methodName' => $_POST['methodname_input'],
+		'argName' => $_POST['arg_input'] 
 		
 		);
 		
@@ -278,12 +275,15 @@ include 'profSession.php';
 		$resultz = json_decode($result, 1);	//json decode
 
 		//display resultz - json array
-		//print('<pre>');
-		//print_r ($resultz);
-		//print('</pre>');
+		print('<pre>');
+		print_r ($jsonData);
+		print('</pre>');
+
 	}
 	
 ?>
+
+
 
 </div>
 
