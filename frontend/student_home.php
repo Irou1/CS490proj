@@ -36,6 +36,7 @@ include 'studentSession.php';
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$tests = curl_exec($ch);
+  $availableTestz = json_decode($tests, 1);
   curl_close($ch);
 ?>
 
@@ -59,17 +60,30 @@ include 'studentSession.php';
     
     <form method="post" action="/~ka279/cs490/final/student_take_test.php"> 
        <?php
-       foreach(json_decode($tests) as $test){
-       	//echo $test;
+       if (!empty($availableTestz)) { //testing --------------------------------------------------------------testing this
 
-       	echo "<p>";
-       	echo "<input type='radio' name='testList[]' value='$test' required>"; //Test - radio button
-       	echo "<font color=white>$test</font>";
-       	echo "</p>";
-          }
+         foreach(json_decode($availableTestz) as $test){
+         	//echo $test;
+
+         	echo "<p>";
+         	echo "<input type='radio' name='testList[]' value='$test' required>"; //Test - radio button
+         	echo "<font color=white>$test</font>";
+         	echo "</p>";
+            }
+
+
        ?>         
         <br> 
        <input type="submit" class="btn btn-hover btn-block btn-green-primary" name="selectedExam" value="Start Testing">
+
+       <?php
+        }
+        else{
+            $_SESSION['message'] = "Test(s) are not Available";
+            echo "<div id='red_msg'>".$_SESSION['message']."</div>";
+            unset($_SESSION['message']);                
+        }
+       ?>
     </form>
     </div>
 
@@ -164,7 +178,7 @@ include 'studentSession.php';
       }
       else{ 
         //echo "<br>" . "<br> " . "<font color='red' size='3' face='verdana'>You have not taken any Tests yet</font>" . "<br>";
-        $_SESSION['message'] = "You have not taken any Tests yet";
+        $_SESSION['message'] = "Your Test(s) have not been Graded yet";
         echo "<div id='red_msg'>".$_SESSION['message']."</div>";
         unset($_SESSION['message']);        
 

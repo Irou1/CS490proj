@@ -240,9 +240,7 @@ include 'profSession.php';
 		'argType' => $realTypes, 
 		'quest' => $_POST['q_input'],
 		'testCase' => $realTestCases,
-		//'testCase' => $_POST['tc_input'],
 		'tcAns' => $realTestCasesAns,
-		//'tcAns' => $_POST['tcAns_input'],
 		'methodName' => $_POST['methodname_input'],
 		'argName' => $_POST['arg_input'] 
 		
@@ -272,11 +270,12 @@ include 'profSession.php';
 		
 		//echo gettype ( $result );		//get var type 
 
-		$resultz = json_decode($result, 1);	//json decode
+		//$resultz = json_decode($result, 1);	//json decode (only decode if you expect an array)
 
 		//display resultz - json array
 		print('<pre>');
-		print_r ($jsonData);
+		//print_r ($jsonData);		//mystuff
+		//print_r ($result);
 		print('</pre>');
 
 	}
