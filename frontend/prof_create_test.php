@@ -40,10 +40,12 @@ include 'profSession.php';
 		}
 	?>
 	<center> 
+		<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </font><br>
 		<h1>Create Test</h1>
 
 		<form method="post">
 		<input type="text" name="examName" placeholder="Enter a new Test Name" class="textInput" required>
+		<br><br>
 
 
 <?php	
@@ -74,6 +76,27 @@ include 'profSession.php';
 	//print('</pre>');
 	
 ?>	
+	<!-- Category options -->
+	<font color="white" size="3" face="verdana">Category:</font>
+		<select name="myCategory" id="myCategory" required>
+		<option value="nada">Please select ...</option>
+		<option value="array">Arrays</option>
+		<option value="loop">Loops</option>
+		<option value="method">Methods</option>
+		<option value="relational">Relational</option>
+		<option value="recursive">Recursive</option>		
+	</select>
+	<br><br>
+	
+	<!-- Diff options -->
+	<font color="white" size="3" face="verdana">Difficulty:</font>   <!-- tab space is &emsp; -->
+		<select name="myDiff" id="myDiff" required>
+		<option value="nada">Please select ...</option>
+		<option value="0">Easy</option>
+		<option value="1">Medium</option>
+		<option value="2">Hard</option>
+	</select>
+
 
 <?php
 	for ($i=0; $i<sizeof($resultz); $i++){	 //loop through questions from question bank
@@ -133,11 +156,18 @@ include 'profSession.php';
 
 		//JSON data
 		$jsonData = array(
+		'prof' => $_SESSION['p_ucid'],
 		'examName' => $_POST['examName'],
 		'questions' => $realQuestions,
 		'points' => $realPoints
+
 		); 
 
+		/*
+	    print('<pre>');
+	    print_r ($jsonData); //display my stuff
+	    print('</pre>');  	
+	    */
 
 
 		//MID URL

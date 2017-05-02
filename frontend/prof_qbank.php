@@ -168,7 +168,7 @@ include 'profSession.php';
 
 	<br>
 	<br>
-	<input type="reset" class="btn btn-block btn-red-primary">
+	<!-- <input type="reset" class="btn btn-block btn-red-primary"> -->
 	<input type="submit" name="send_question" value="Submit" class="btn btn-hover btn-block btn-green-primary" >
 	
 

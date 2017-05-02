@@ -16,6 +16,74 @@ include 'profSession.php';
  ?>
 
 
+  <?php
+
+  //GET all current test's questions
+  $exam = $_GET['exam'];  //$exam = 'someTest'; 
+  $_SESSION['examName'] = $_GET['exam']; 
+  
+  $examData = array('exam'=>$exam);  //$questions = array("one", "two", "three");
+
+  $url = "https://web.njit.edu/~or32/rc/receiveonetest.php";
+
+  $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $examData);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $questions = curl_exec($ch);
+        curl_close($ch);
+  ?>
+  
+
+  <?php
+  
+  if (isset($_POST['delTestButton'])) 
+  { 
+
+  //if ($_GET['delTestButton']){
+    deleteTestFunction();
+    //echo $_SESSION['examName'];
+    //header('Location: prof_home.php');    
+  }
+
+    function deleteTestFunction() {
+      //echo 'Run php function!';
+      //
+
+        //JSON data
+    $jsonData = array(
+    //'exam' => $removeExam
+    'exam' => $_SESSION['examName']
+
+    );
+    
+    //MID URL
+    $url = "https://web.njit.edu/~or32/rc/deletetest.php";
+
+    //initiate cURL
+    $ch = curl_init($url);
+    
+    //Tell cURL that we want to send a POST request
+    curl_setopt($ch, CURLOPT_POST, true);
+    
+    //Attach our encoded JSON string to the POST fields
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+    
+    //returns $url stuff
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+     //Execute the request
+    $result = curl_exec($ch);
+    
+    //close cURL 
+    curl_close($ch);
+
+    echo $result;
+
+    }
+
+  ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,52 +102,32 @@ include 'profSession.php';
 <center>
 
 
-
       <div>
-      <?php
-
-	    //GET all current test's questions
-      $exam = $_GET['exam'];  //$exam = 'someTest'; 
-      $_SESSION['examName'] = $_GET['exam']; 
-      
-	    $examData = array('exam'=>$exam);  //$questions = array("one", "two", "three");
-
-      $url = "https://web.njit.edu/~or32/rc/receiveonetest.php";
-	  
-      $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $examData);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $questions = curl_exec($ch);
-            curl_close($ch);
-            
-         ?>
-
 
          <h2>Currently editing test:  <?php echo $exam; ?></h2>
-         <button class="btn btn-block btn-red-primary" onclick="window.location.href='prof_home.php?BURN=true'" />Delete Test</button> <!-- testing delete test -->
+
+          <form method="post">
+           <button class="btn btn-block btn-red-primary" name="delTestButton" />Delete Test</button> <!-- testing delete test -->
+          </form>
 
          <form method="post" action="student_submit_action.php"> 
 
 	    <br>
 	    <?php 
 
-                $i=1;
-                $studentAnsArr = array(); //testing
-               foreach(json_decode($questions) as $question){
-                 echo "<h2>Question $i</h2>";
-      		       echo "<h4>$question</h4>"; 
+          $i=1;
+          $studentAnsArr = array(); //testing
+         foreach(json_decode($questions) as $question){
+           echo "<h2>Question $i</h2>";
+           echo "<h4>$question</h4>"; 
 
-                 $i = $i + 1;
+           $i = $i + 1;
                  
       ?>
     
         <textarea id="studentAnsInput" class ="input" placeholder="Enter your answer here" rows="7" cols="60"  name="studentAnsInput['<?php echo $question; ?>']"></textarea>
-
-   
-             
+          
 			<br>
-			
 			<br>
          <?php 
 	       }   //curly - foreach...
@@ -93,6 +141,7 @@ include 'profSession.php';
       </div>
 
    </center>  
+
 
 
 

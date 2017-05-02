@@ -36,14 +36,14 @@ include 'studentSession.php';
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$tests = curl_exec($ch);
-  $availableTestz = json_decode($tests, 1);
   curl_close($ch);
 ?>
 
 <body>
 <center>
 	<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </font><br><br>
-	<!-- <h1>Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1> -->	
+	<!-- <h1>Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </h1> -->
+	
 
   <?php //---------Student take a test-------------------?>
   <div id="wrapper">
@@ -59,31 +59,19 @@ include 'studentSession.php';
     <div id="availableTests" style="display:none;"> <!-- hidden -->
     
     <form method="post" action="/~ka279/cs490/final/student_take_test.php"> 
+      <font color="white" size="3" face="verdana">List of Tests:</font>
        <?php
-       if (!empty($availableTestz)) { //testing --------------------------------------------------------------testing this
+       foreach(json_decode($tests) as $test){
+       	//echo $test;
 
-         foreach(json_decode($availableTestz) as $test){
-         	//echo $test;
-
-         	echo "<p>";
-         	echo "<input type='radio' name='testList[]' value='$test' required>"; //Test - radio button
-         	echo "<font color=white>$test</font>";
-         	echo "</p>";
-            }
-
-
+       	echo "<p>";
+       	echo "<input type='radio' name='testList[]' value='$test' required>"; //Test - radio button
+       	echo "<font color=white>$test</font>";
+       	echo "</p>";
+          }
        ?>         
         <br> 
        <input type="submit" class="btn btn-hover btn-block btn-green-primary" name="selectedExam" value="Start Testing">
-
-       <?php
-        }
-        else{
-            $_SESSION['message'] = "Test(s) are not Available";
-            echo "<div id='red_msg'>".$_SESSION['message']."</div>";
-            unset($_SESSION['message']);                
-        }
-       ?>
     </form>
     </div>
 
@@ -155,8 +143,7 @@ include 'studentSession.php';
     <div id="showOldTestDiv" style="display:none;"> <!-- hidden -->
     
     <form method="post" action="/~ka279/cs490/final/student_see_old_test_and_grade.php"> 
-      <br>
-      <br>
+      <!-- <font color="white" size="3" face="verdana">List of Tests:</font> -->
     <?php
 
       if (!empty($studentOldTests)) {
@@ -183,7 +170,7 @@ include 'studentSession.php';
         unset($_SESSION['message']);        
 
       }
-       ?>         
+       ?>       
     </form>
     </div>
   

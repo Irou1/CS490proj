@@ -44,8 +44,8 @@ include 'studentSession.php';
   );
   
   //MID URL
-  //$url = "https://web.njit.edu/~or32/rc/getgrade.php";
-  $url = "https://web.njit.edu/~em244/CS490/getFirstGrade.php";
+  $url = "https://web.njit.edu/~or32/rc/getgrade.php";
+  //$url = "https://web.njit.edu/~em244/CS490/getFirstGrade.php";
 
   //initiate cURL
   $ch = curl_init($url);
@@ -69,13 +69,15 @@ include 'studentSession.php';
 
   $resultz = json_decode($result, 1); //json decode
 
+  $feedback = json_decode($resultz["grievances"], 1);
 
   //display resultz - json array
   print('<pre>');
   ?>
   
   <h3>
-  <?php print_r ($resultz); ?>	
+  <?php print_r ($resultz); ?>  
+  <?php print_r ($feedback); ?>	
   </h3>
 
   <?php
