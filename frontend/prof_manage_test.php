@@ -56,19 +56,35 @@ include 'profSession.php';
     <div id="availableTests" style="display:none;">
     
     <form method="post" action="/~ka279/cs490/final/prof_edit_test.php"> 
-    	<h3>List of Tests</h3>
-       <?php
-       foreach(json_decode($tests) as $test){
-       	//echo $test;
-       	//echo "<div style ='font:11px/21px Arial,tahoma,sans-serif;color:#ff0000'> $test</div>";
-       	echo "<p>";
-       	echo "<input type='radio' name=testList[]' value='$test' required>"; //Test - radio button
-       	echo "<font color=DarkBlue>$test</font>";
-       	echo "</p>";
-          }
-       ?>         
-        <br> 
+    	<!-- <h3>List of Tests</h3> -->
+    <?php
+
+      if (!empty(json_decode($tests))) {
+        echo "<font color='white' size='3' face='verdana'>List of Tests:</font>";
+       //foreach( $studentOldTests["examName"] as $oldtest){------
+        foreach(json_decode($tests) as $test){
+        //echo $test;
+
+        echo "<p>";
+        echo "<input type='radio' name=testList[]' value='$test' required>"; //Test - radio button
+        echo "<font color=DarkBlue>$test</font>";
+        echo "</p>";
+          } 
+        $_SESSION['myNewTest'] = $test;  
+        ?>
        <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedExam" value="Edit">
+        <br>
+
+        <?php
+      }
+      else{ 
+        //echo "<br>" . "<br> " . "<font color='red' size='3' face='verdana'>You have not taken any Tests yet</font>" . "<br>";
+        $_SESSION['message'] = "There are NO Test(s) that have been created yet";
+        echo "<div id='red_msg'>".$_SESSION['message']."</div>";
+        unset($_SESSION['message']);        
+
+      }
+       ?>   
     </form>
      </div>
     

@@ -11,7 +11,7 @@ Prof - Home Page
 include 'showerrors.php';
 
 //start session
-session_start()
+session_start();
 include 'profSession.php';
 
 ?>
@@ -34,9 +34,9 @@ include 'profSession.php';
 <body>
 <?php
 	if (isset($_GET['BURN'])) { //display test deleted when activated
-		//burnFunction(); //run php delete test function
+		burnFunction(); //run php delete test function
 		$_SESSION['message'] = "Test successfully deleted!";
-		echo "<div id='red_msg'>".$_SESSION['message']."</div>";
+		echo "<div id='error_msg'>".$_SESSION['message']."</div>";
 		unset($_SESSION['message']);
 	}
 ?>
@@ -55,7 +55,38 @@ include 'profSession.php';
 </form>
 
 
+<?php
+  function burnFunction() {
+    //echo 'Run php function!';
 
+    	//JSON data
+	$jsonData = array(
+	'flag' => 'test',
+	'mode' => 'burn'
+	);
+	
+	//MID URL
+	$url = "https://web.njit.edu/~or32/beta/midcontrol.php";
+
+	//initiate cURL
+	$ch = curl_init($url);
+	
+	//Tell cURL that we want to send a POST request
+	curl_setopt($ch, CURLOPT_POST, true);
+	
+	//Attach our encoded JSON string to the POST fields
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+	
+	//returns $url stuff
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	
+	 //Execute the request
+	$result = curl_exec($ch);
+	
+	//close cURL 
+	curl_close($ch);
+  }
+?>
 <br><br>
 <!--
 <button class="btn btn-block btn-red-primary" onclick="window.location.href='prof_home.php?BURN=true'" />Delete Test</button>

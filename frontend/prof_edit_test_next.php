@@ -43,7 +43,7 @@ include 'profSession.php';
   //if ($_GET['delTestButton']){
     deleteTestFunction();
     //echo $_SESSION['examName'];
-    //header('Location: prof_home.php');    
+    header('Location: http://afsaccess1.njit.edu/~ka279/cs490/final/prof_home.php');    
   }
 
     function deleteTestFunction() {

@@ -36,6 +36,7 @@ include 'studentSession.php';
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$tests = curl_exec($ch);
+
   curl_close($ch);
 ?>
 
@@ -59,19 +60,36 @@ include 'studentSession.php';
     <div id="availableTests" style="display:none;"> <!-- hidden -->
     
     <form method="post" action="/~ka279/cs490/final/student_take_test.php"> 
-      <font color="white" size="3" face="verdana">List of Tests:</font>
-       <?php
-       foreach(json_decode($tests) as $test){
-       	//echo $test;
+      <!-- <font color="white" size="3" face="verdana">List of Tests:</font> -->
+    <?php
 
-       	echo "<p>";
-       	echo "<input type='radio' name='testList[]' value='$test' required>"; //Test - radio button
-       	echo "<font color=white>$test</font>";
-       	echo "</p>";
-          }
-       ?>         
-        <br> 
+      if (!empty(json_decode($tests))) {
+        echo "<font color='white' size='3' face='verdana'>List of Tests:</font>";
+       //foreach( $studentOldTests["examName"] as $oldtest){------
+        foreach(json_decode($tests) as $test){
+        //echo $test;
+
+        echo "<p>";
+        echo "<input type='radio' name='testList[]' value='$test' required>"; //Test - radio button
+        echo "<font color=white>$test</font>";
+        echo "</p>";
+          } 
+        $_SESSION['myNewTest'] = $test;  
+        ?>
        <input type="submit" class="btn btn-hover btn-block btn-green-primary" name="selectedExam" value="Start Testing">
+        <br>
+
+        <?php
+      }
+      else{ 
+        //echo "<br>" . "<br> " . "<font color='red' size='3' face='verdana'>You have not taken any Tests yet</font>" . "<br>";
+        $_SESSION['message'] = "There are NO Test(s) available yet";
+        echo "<div id='red_msg'>".$_SESSION['message']."</div>";
+        unset($_SESSION['message']);        
+
+      }
+       ?>    
+
     </form>
     </div>
 
