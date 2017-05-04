@@ -31,13 +31,14 @@ include 'profSession.php';
 
 <?php
 	//MID URL - get Test Names
-	$url = "https://web.njit.edu/~or32/rc/receivealltests.php";
+
+	//$url = "https://web.njit.edu/~or32/xr/receivealltests.php";
+  $url = "http://afsaccess2.njit.edu/~or32/xr/receivealltests.php";
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_POST, true);
-//	curl_setopt($ch, CURLOPT_POSTFIELDS, $DATA);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$tests = curl_exec($ch);
-    curl_close($ch);
+  curl_close($ch);
 ?>
 
 <body>

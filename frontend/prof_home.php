@@ -66,8 +66,10 @@ include 'profSession.php';
 	);
 	
 	//MID URL
-	$url = "https://web.njit.edu/~or32/beta/midcontrol.php";
-
+      
+	//$url = "https://web.njit.edu/~or32/xr/midcontrol.php";
+	$url = "http://afsaccess2.njit.edu/~or32/xr/deletetest.php";
+	
 	//initiate cURL
 	$ch = curl_init($url);
 	

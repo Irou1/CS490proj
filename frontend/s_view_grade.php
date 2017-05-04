@@ -38,7 +38,7 @@ include 'studentSession.php';
       //echo $studentName;
 
 
-      //$url = "https://web.njit.edu/~or32/rc/getgrade.php";
+      //$url = "https://web.njit.edu/~or32/xr/getgrade.php";
       
 
   //JSON data

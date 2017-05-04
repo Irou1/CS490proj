@@ -247,8 +247,9 @@ include 'profSession.php';
 		);
 		
 		//MID URL
-		$url = "https://web.njit.edu/~or32/rc/sendtask.php";
-	
+		//$url = "https://web.njit.edu/~or32/xr/sendtask.php";
+		$url = "http://afsaccess2.njit.edu/~or32/xr/sendtask.php";
+		
 
 		//initiate cURL
 		$ch = curl_init($url);

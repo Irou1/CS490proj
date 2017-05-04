@@ -24,8 +24,10 @@ include 'studentSession.php';
   );
   
   //MID URL
-  $url = "https://web.njit.edu/~or32/rc/getgrade.php";
+  //$url = "https://web.njit.edu/~or32/xr/getgrade.php";
   //$url = "https://web.njit.edu/~em244/CS490/getFirstGrade.php";
+  $url = "http://afsaccess2.njit.edu/~or32/xr/getgrade.php";
+  
 
   //initiate cURL
   $ch = curl_init($url);

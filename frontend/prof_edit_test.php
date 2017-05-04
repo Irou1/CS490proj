@@ -32,11 +32,13 @@ include 'profSession.php';
    $selectedExam = $_POST['testList'][0];
 
   
-   if($selectedExam){ 
-      header("Location: https://web.njit.edu/~ka279/cs490/final/prof_edit_test_next.php?exam=$selectedExam");
+   if($selectedExam){
+       //header("Location: https://web.njit.edu/~ka279/cs490/final/prof_edit_test_next.php?exam=$selectedExam");
+      header("Location: http://afsaccess2.njit.edu/~ka279/cs490/final/prof_edit_test_next.php?exam=$selectedExam");
       exit;
    }else{
-   		header("Location: https://web.njit.edu/~ka279/cs490/final/prof_manage_test.php");
+   		//header("Location: https://web.njit.edu/~ka279/cs490/final/prof_manage_test.php");
+       header("Location: http://afsaccess2.njit.edu/~ka279/cs490/final/prof_manage_test.php");
       //echo "Unable to Load test";
    }
 

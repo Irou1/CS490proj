@@ -1,3 +1,6 @@
+
+
+
 <!--
 Kenneth Aparicio 
 Front End
@@ -32,7 +35,9 @@ include 'studentSession.php';
 
   
    if($selectedExam){ 
-      header("Location: https://web.njit.edu/~ka279/cs490/final/student_take_test_next1.php?exam=$selectedExam");
+      //header("Location: https://web.njit.edu/~ka279/cs490/final/student_take_test_next1.php?exam=$selectedExam");
+   	header("Location: http://afsaccess2.njit.edu/~ka279/cs490/final/student_take_test_next1.php?exam=$selectedExam");
+
       exit;
    }else{
       echo "Unable to Load test";

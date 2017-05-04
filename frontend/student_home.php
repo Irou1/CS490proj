@@ -31,7 +31,9 @@ include 'studentSession.php';
 
 <?php
 	//MID URL - get Test Names so student can TAKE it
-	$url = "https://web.njit.edu/~or32/rc/receivealltests.php";
+	//$url = "https://web.njit.edu/~or32/xr/receivealltests.php";
+  
+  $url = "http://afsaccess2.njit.edu/~or32/xr/receivealltests.php";
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_POST, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -108,8 +110,8 @@ include 'studentSession.php';
       //echo "<br>";
     
     //MID URL - get Test Names that student ALREADY TOOK
-    //$url = "https://web.njit.edu/~or32/rc/receiveexamsstudenttook.php";
-    $url = "https://web.njit.edu/~em244/CS490/getAvailableTests.php";
+    $url = "https://web.njit.edu/~or32/xr/receiveexamsstudenttook.php";
+    //$url = "https://web.njit.edu/~em244/CS490/getAvailableTests.php"; //works with eddies
 
     //initiate cURL
     $ch = curl_init($url);

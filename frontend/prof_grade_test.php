@@ -29,6 +29,7 @@ include 'profSession.php';
 
 <body>
 <center>
+
 	<h1>Tests graded</h1>
 	
 

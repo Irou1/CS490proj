@@ -28,8 +28,10 @@ include 'profSession.php';
 
 <?php
 	//MID URL - get Student Names
-	//$url = "https://web.njit.edu/~or32/rc/receiveallstudents.php";
-	$url = "https://web.njit.edu/~em244/CS490/getAllStudents.php";
+	
+	//$url = "https://web.njit.edu/~or32/xr/receiveallstudents.php";
+	//$url = "https://web.njit.edu/~em244/CS490/getAllStudents.php"; // works with eddies
+	$url = "http://afsaccess2.njit.edu/~or32/xr/receiveallstudents.php";
 
 	//initiate cURL
 	$ch = curl_init($url);

@@ -47,8 +47,10 @@ include 'profSession.php';
     );
     
     //MID URL
-    //$url = "https://web.njit.edu/~or32/rc/receivetakentests.php";
-    $url = "https://web.njit.edu/~em244/CS490/getTakenTests.php";
+    //$url = "https://web.njit.edu/~or32/xr/receivetakentests.php";
+    //$url = "https://web.njit.edu/~em244/CS490/getTakenTests.php"; //works with eddies
+
+    $url = "http://afsaccess2.njit.edu/~or32/xr/receivetakentests.php";
 
     //initiate cURL
     $ch = curl_init($url);

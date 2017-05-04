@@ -58,8 +58,11 @@ include 'studentSession.php';
     //echo "<br>";
 	
 	//MID URL
-	$url = "https://web.njit.edu/~or32/rc/sendstudentanswers.php";
+	//$url = "https://web.njit.edu/~or32/xr/sendstudentanswers.php";
 	//$url = "https://web.njit.edu/~em244/CS490/Model/getGradedAnswers.php";
+	
+	$url = "http://afsaccess2.njit.edu/~or32/xr/sendstudentanswers.php";
+
 
 	//initiate cURL
 	$ch = curl_init($url);

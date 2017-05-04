@@ -40,7 +40,9 @@ include 'studentSession.php';
       
 	    $examData = array('exam'=>$exam);  //$questions = array("one", "two", "three");
 
-      $url = "https://web.njit.edu/~or32/rc/receiveonetest.php";
+      //$url = "https://web.njit.edu/~or32/xr/receiveonetest.php";
+      $url = "http://afsaccess2.njit.edu/~or32/xr/receiveonetest.php";
+      
 	  
       $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_POST, true);

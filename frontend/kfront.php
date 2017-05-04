@@ -44,9 +44,9 @@ if (isset($_POST['login_button'])) {
 	);
 	
 	//MID URL
-	$url = "https://web.njit.edu/~or32/rc/midlogin.php";
-	//$url = "http://192.168.1.136/cs490/midcontrol.php"; //oscar house
-	//$url = "http://172.20.10.12/cs490/midcontrol.php"; //myiPhone
+
+	//$url = "https://web.njit.edu/~or32/xr/midlogin.php";
+    $url = "http://afsaccess2.njit.edu/~or32/xr/midlogin.php";
 
 	//initiate cURL
 	$ch = curl_init($url);

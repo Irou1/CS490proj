@@ -24,7 +24,8 @@ include 'profSession.php';
   
   $examData = array('exam'=>$exam);  //$questions = array("one", "two", "three");
 
-  $url = "https://web.njit.edu/~or32/rc/receiveonetest.php";
+  //$url = "https://web.njit.edu/~or32/xr/receiveonetest.php";
+  $url = "http://afsaccess2.njit.edu/~or32/xr/receiveonetest.php";
 
   $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_POST, true);
@@ -43,8 +44,8 @@ include 'profSession.php';
   //if ($_GET['delTestButton']){
     deleteTestFunction();
     //echo $_SESSION['examName'];
-    header('Location: http://web.njit.edu/~ka279/cs490/final/prof_home.php');    
-    //header('Location: http://afsaccess1.njit.edu/~ka279/cs490/final/prof_home.php');    
+    //header('Location: http://web.njit.edu/~ka279/cs490/final/prof_home.php');    
+    header('Location: http://afsaccess2.njit.edu/~ka279/cs490/final/prof_home.php');    
   }
 
     function deleteTestFunction() {
@@ -59,7 +60,9 @@ include 'profSession.php';
     );
     
     //MID URL
-    $url = "https://web.njit.edu/~or32/rc/deletetest.php";
+
+    // $url = "https://web.njit.edu/~or32/xr/deletetest.php";
+    $url = "http://afsaccess2.njit.edu/~or32/xr/deletetest.php";
 
     //initiate cURL
     $ch = curl_init($url);

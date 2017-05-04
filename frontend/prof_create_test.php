@@ -109,7 +109,7 @@ include 'profSession.php';
 			<input type='checkbox' name='questionList[]' value="<?php echo $resultz[$i]; ?>"> 
 			<textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
 			<!--Points assigned testing  -->
-			<input type="number" min="0" style="width: 60px" name ='pointsAssigned[]' placeholder="Pts" maxlength="2" size="1">
+			<input type="number" min="1" style="width: 60px" name ='pointsAssigned[]' placeholder="Pts" maxlength="2" size="1">
 
 			<br>
 			<?php }  //for loop - curly brace?> 
@@ -144,7 +144,9 @@ include 'profSession.php';
 		//-------------------Sending Points assigned to question---------------
 		$pts_arr = array();
 		foreach ($_POST['pointsAssigned'] as $ptsInput){
-			array_push($pts_arr, $ptsInput);
+			if ($ptsInput > 0){ 
+				array_push($pts_arr, $ptsInput);
+			}
 		}
 
 		$realPoints="";
@@ -170,7 +172,9 @@ include 'profSession.php';
 
 
 		//MID URL
-		$url = "https://web.njit.edu/~or32/rc/sendexam.php";
+
+		//$url = "https://web.njit.edu/~or32/xr/sendexam.php";
+        $url = "http://afsaccess2.njit.edu/~or32/xr/sendexam.php";
 
 		//initiate cURL
 		$ch = curl_init($url);
