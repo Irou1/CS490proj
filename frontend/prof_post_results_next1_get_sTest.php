@@ -39,7 +39,7 @@ include 'profSession.php';
    }else{
    	  //header("Location: https://web.njit.edu/~ka279/cs490/final/prof_post_results.php");
       header("Location: http://afsaccess2.njit.edu/~ka279/cs490/final/prof_post_results.php");
-        h
+        
 
       //echo "Unable to Load Student's test";
    }
