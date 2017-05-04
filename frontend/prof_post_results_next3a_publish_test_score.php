@@ -96,7 +96,7 @@ include 'profSession.php';
 </head>
 
 <body>
-<?php //-------------------------testing ----showing student's test ---edit feedback and edit points ?>
+<?php //--------------testing ----showing student's test ---edit feedback and edit points ?>
 
 <div class ="master">
 

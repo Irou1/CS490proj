@@ -15,26 +15,6 @@ session_start();
 include 'studentSession.php';
  ?>
 
-
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>CS490 Student See Test Grade</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="studentscript.js"></script>
-<ul>
-  <li><a class="active" href="student_home.php">Home</a></li>
-  <li style="float:right"><a href="logout.php">LogOut</a></li>
-</ul>
-</head>
-<body>
-  <center>
-	<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </font><br>
-	<font color="white" size="6" face="verdana"> Viewing Graded Exam: <?php echo ucfirst($_SESSION['myOldTest']) ?> </font><br><br>
-	</center>
-
   <?php
   
   //JSON data
@@ -69,7 +49,12 @@ include 'studentSession.php';
 
   $resultz = json_decode($result, 1); //json decode
 
-  $feedback = json_decode($resultz["grievances"], 1);
+  $myGrade = json_decode($resultz["grade"], 1); //Total Grade
+
+  $feedback = json_decode($resultz["grievances"], 1);  //array
+
+
+  
 
   //display resultz - json array
   print('<pre>');
@@ -77,13 +62,34 @@ include 'studentSession.php';
   
   <h3>
   <?php print_r ($resultz); ?>  
-  <?php print_r ($feedback); ?>	
+  <?php print_r ($feedback); ?> 
   </h3>
 
   <?php
   print('</pre>');
-
  ?>
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CS490 Student See Test Grade</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="studentscript.js"></script>
+<ul>
+  <li><a class="active" href="student_home.php">Home</a></li>
+  <li style="float:right"><a href="logout.php">LogOut</a></li>
+</ul>
+</head>
+<body>
+  <center>
+	<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </font><br>
+	<font color="white" size="6" face="verdana"> Viewing Graded Exam: <?php echo ucfirst($_SESSION['myOldTest']) ?> </font><br><br>
+  <font color="white" size="6" face="verdana"> Your Grade: <?php echo $myGrade ?> </font><br><br>
+	</center>
+
+
   
 <?php //----------------------------------------------------------------------------------------testing ?>
 
@@ -92,7 +98,7 @@ include 'studentSession.php';
   <div class="col">
   <?php
   $i=1;
-  $t_questions = array ("q1", "q2", "q3", "q4");
+  $t_questions = array ("q1", "q2");
 
   //echo "Test Questions are: " . $t_questions[0] . " " . $t_questions[1] . " " . $t_questions[2] . " " . $t_questions[3] ;
 
@@ -114,7 +120,7 @@ include 'studentSession.php';
 
   <div class="col">
   <?php
-  $sAns = array("answer1", "answer2", "answer3", "answer4");
+  $sAns = array("answer1", "answer2");
   foreach ($sAns as $sa) {
     echo "<font color='white' size='3' face='verdana'>Your Answer</font>" . "<br>";
   ?>
@@ -130,19 +136,26 @@ include 'studentSession.php';
 
   <div class="col">
   <?php
-  $feedback = array("good", "bad", "compiling errors", "works");
+  $feedbackString = ""; //initliaze feedbackString
+  //$feedbackStuff = array("good", "bad", "ehh", "lol");
 
+    foreach ($feedback as $ff => $innerArray) {
+      foreach ($innerArray as $realFF => $f) {
+        $feedbackString = $feedbackString . $f . "\r\n";
+      }
 
-  foreach ($feedback as $f) {
+   
     echo "<font color='white' size='3' face='verdana'>Feedback</font>" . "<br>";
 
   ?>
 
-  <textarea type="text" readonly class="f" rows="7" cols="36" style="resize:none;" ><?php echo $f; ?></textarea>
+  <textarea type="text" readonly class="f" rows="7" cols="36" style="resize:none;" ><?php echo $feedbackString; ?></textarea>
   <br>
   <br>
 
   <?php
+  $feedbackString = "";  //empty the feedbackString
+
   } // for each FEEDBACK- ending curly brace
   ?>
   </div>
@@ -157,7 +170,7 @@ include 'studentSession.php';
      'us' => 'United States'
   );
   
-  $points = array("10", "20", "50", "500");
+  $points = array("10", "20");
   foreach ($points as $pts){ 
     
   ?>
@@ -168,7 +181,8 @@ include 'studentSession.php';
   */
   ?>
 
-  <input type="text" readonly class="p" style="width: 60px" value="<?php echo $pts . '/' . '10' . 'pts'; ?>" maxlength="10" size="1">
+  <!-- <input type="text" readonly class="p" style="width: 60px" value="<?php echo $pts . '/' . '10' . 'pts'; ?>" maxlength="10" size="1"> -->
+  <input type="text" readonly class="p" style="width: 60px" value="<?php echo $pts . 'pts'; ?>" maxlength="10" size="1">
   <br><br><br><br><br><br><br><br>
 
   <?php

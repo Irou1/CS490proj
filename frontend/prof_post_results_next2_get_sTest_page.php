@@ -100,18 +100,37 @@ include 'profSession.php';
     <div id="studentTestDivSpace" style="display:none;">
     
     <form method="post" action="prof_post_results_next3a_publish_test_score.php"> 
-        <h3>List of Tests which <?php echo $student ?> took</h3>
-       <?php
-       foreach($testz["exam"] as $testNamez){
+        <!-- <h3>List of Tests which <?php echo $student ?> took</h3> -->
+       
+    <?php
 
+      if (!empty($testz["exam"])) {
+        echo "<font color='white' size='5' face='verdana'>List of Tests $student took:</font>";
+       //foreach( $studentOldTests["examName"] as $oldtest){------
+        
+        foreach($testz["exam"] as $testNamez){
+        
         echo "<p>";
         echo "<input type='radio' name='testNameList[]' value='$testNamez'>"; //Test - radio button
         echo "<font color=DarkBlue>$testNamez</font>";
         echo "</p>";
           }
-       ?>         
-        <br> 
+        
+        ?>
        <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedStudentTest" value="Publish Student Test">
+        <br>
+
+        <?php
+      }
+      else{ 
+        //echo "<br>" . "<br> " . "<font color='red' size='3' face='verdana'>You have not taken any Tests yet</font>" . "<br>";
+        $_SESSION['message'] = "There are NO Test(s) this student has taken";
+        echo "<div id='red_msg'>".$_SESSION['message']."</div>";
+        unset($_SESSION['message']);        
+
+      }
+       ?>   
+
     </form>
  </div>
   

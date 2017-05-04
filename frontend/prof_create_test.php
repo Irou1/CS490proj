@@ -87,6 +87,15 @@ include 'profSession.php';
 		<option value="recursive">Recursive</option>		
 	</select>
 	<br><br>
+	<!-- Diff options -->
+	<font color="white" size="3" face="verdana">Difficulty:</font>   <!-- tab space is &emsp; -->
+		<select name="myDiff" id="myDiff" required>
+		<option value="nada">Please select ...</option>
+		<option value="0">Easy</option>
+		<option value="1">Medium</option>
+		<option value="2">Hard</option>
+	</select>
+	<br><br>	
 	
 <?php
 	for ($i=0; $i<sizeof($resultz); $i++){	 //loop through questions from question bank

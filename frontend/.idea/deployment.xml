@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="NJIT" uploadOnCheckin="683b44a5-9178-4dc3-a6f5-074d0a05b579">
+    <serverData>
+      <paths name="NJIT">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/public_html/cs490/final" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myUploadOnCheckinName" value="NJIT" />
+  </component>
+</project>
