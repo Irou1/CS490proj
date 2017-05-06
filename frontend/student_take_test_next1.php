@@ -54,7 +54,6 @@ include 'studentSession.php';
       ?>
 
       <?php
-      //testing ------------------------------------->
       //GET all current test's question's POINTS
 
       //$exam = $_GET['exam'];  //$exam = 'someTest'; 
