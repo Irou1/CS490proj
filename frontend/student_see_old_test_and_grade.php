@@ -24,6 +24,7 @@ include 'studentSession.php';
   );
   
   //MID URL
+
   //$url = "https://web.njit.edu/~or32/xr/getgrade.php";
   //$url = "https://web.njit.edu/~em244/CS490/getFirstGrade.php";
   $url = "http://afsaccess2.njit.edu/~or32/xr/getgrade.php";
@@ -54,9 +55,6 @@ include 'studentSession.php';
   $myGrade = json_decode($resultz["grade"], 1); //Total Grade
 
   $feedback = json_decode($resultz["grievances"], 1);  //array
-
-
-  
 
   //display resultz - json array
   print('<pre>');
@@ -139,11 +137,14 @@ include 'studentSession.php';
   <div class="col">
   <?php
   $feedbackString = ""; //initliaze feedbackString
+  $temp = "";
   //$feedbackStuff = array("good", "bad", "ehh", "lol");
 
     foreach ($feedback as $ff => $innerArray) {
+      //foreach (array_slice($innerArray, 0, count($innerArray) - 1) as $realFF => $f) {
       foreach ($innerArray as $realFF => $f) {
         $feedbackString = $feedbackString . $f . "\r\n";
+        //$feedbackString = implode("\n", $innerArray);
       }
 
    
@@ -151,7 +152,7 @@ include 'studentSession.php';
 
   ?>
 
-  <textarea type="text" readonly class="f" rows="7" cols="36" style="resize:none;" ><?php echo $feedbackString; ?></textarea>
+  <textarea type="text" readonly class="f" rows="7" cols="40" style="resize:none;" ><?php echo $feedbackString; ?></textarea>
   <br>
   <br>
 

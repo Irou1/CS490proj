@@ -61,14 +61,15 @@ include 'profSession.php';
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	
 	 //Execute the request
-	$result = curl_exec($ch);
+	$questions = curl_exec($ch);
 	
 	//close cURL 
 	curl_close($ch);
 	
-	//echo gettype ( $result );		//get var type 
+	//echo gettype ( $questions );		//get var type 
 
-	$resultz = json_decode($result, 1);	//json decode
+	$qResultz = json_decode($questions, 1);	//json decode
+
 
 	//display resultz - json array
 	//print('<pre>');
@@ -76,6 +77,87 @@ include 'profSession.php';
 	//print('</pre>');
 	
 ?>	
+<?php //testing for js 
+
+/*
+$categoryArr = array("relational", "relational", "relational, method, method, method, relational, relational, loop, array, loop, loop, method, relational, method, method, method, method, relational, method, loop, loop, loop, relational");
+
+$catJsonArray = json_encode($categoryArr);
+
+$diffArr = array(0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 2, 2, 0, 1, 0, 0, 1, 2, 2, 0);
+
+$diffJsonArray = json_encode($diffArr);
+*/
+
+?>
+
+
+<script type="text/javascript">
+
+	var result = <?php echo $question; ?>;
+	var indexArray = <?php echo $diffJsonArray; ?>;
+	var categories = <?php echo $catJsonArray; ?>;
+
+	var filteredQuestions = [];
+	var finalQuestions = "";
+
+	window.document.onload = function(e){ 
+	    filteredQuestions = <?php echo $question; ?>;
+	    finalQuestions = JSON.stringify(filteredQuestions);
+	    postStuff(finalQuestions);
+	}
+
+
+	function selectDifficulty(){
+		var myDiff = document.getElementById("myDiff").value;
+
+		filteredQuestions = [];
+
+		if(!isNaN(myDiff)){
+			myDiff = parseInt(myDiff);
+			for(var i=0;i<indexArray.length;i++){
+				//select questions that matches criteria
+				if (indexArray[i]==myDiff){
+					filteredQuestions.push(question[i]);
+				}
+				//console.log(indexArray[i]);
+			}
+			console.log(myDiff);
+		}
+		else{
+			console.log(myDiff)
+		}
+
+		finalQuestions = JSON.stringify(filteredQuestions);
+		postStuff(finalQuestions);
+	}
+
+
+	function postStuff(toPass){
+		// Create our XMLHttpRequest object
+		var hr = new XMLHttpRequest();
+		// Create some variables we need to send to our PHP file
+		var url = "prof_create_test.php";
+		
+		var vars = "finalQuestions="+ toPass;
+		hr.open("POST", url, true);
+		hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		
+		// Send the data to PHP now... and wait for response to update the status div
+		hr.send(vars); // Actually execute the request
+		console.log(hr);
+		}
+</script>
+<?php
+	//testing for JS
+	//$filteredQuestions = json_decode($_POST['finalQuestions']);
+	$filteredQuestions = json_decode(stripslashes($_POST['finalQuestions']));
+
+	
+	echo gettype($filteredQuestions);
+?>
+
+
 	<!-- Category options -->
 	<font color="white" size="3" face="verdana">Category:</font>
 		<select name="myCategory" id="myCategory" required>
@@ -89,7 +171,7 @@ include 'profSession.php';
 	<br><br>
 	<!-- Diff options -->
 	<font color="white" size="3" face="verdana">Difficulty:</font>   <!-- tab space is &emsp; -->
-		<select name="myDiff" id="myDiff" required>
+		<select name="myDiff" id="myDiff" required onchange="selectDifficulty()">
 		<option value="nada">Please select ...</option>
 		<option value="0">Easy</option>
 		<option value="1">Medium</option>
@@ -98,7 +180,7 @@ include 'profSession.php';
 	<br><br>	
 	
 <?php
-	for ($i=0; $i<sizeof($resultz); $i++){	 //loop through questions from question bank
+	for ($i=0; $i<sizeof($qResultz); $i++){	 //loop through questions from question bank
 		$j = $i + 1; 
 ?>		
 
@@ -106,8 +188,8 @@ include 'profSession.php';
 		<center>
 			<h2> QB Question <?php echo $j ?> </h2>
 
-			<input type='checkbox' name='questionList[]' value="<?php echo $resultz[$i]; ?>"> 
-			<textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($resultz[$i]) ?> </textarea> 
+			<input type='checkbox' name='questionList[]' value="<?php echo $qResultz[$i]; ?>"> 
+			<textarea name = "qbank" readonly class="input" rows="7" cols="60"> <?php print_r ($qResultz[$i]) ?> </textarea> 
 			<!--Points assigned testing  -->
 			<input type="number" min="1" style="width: 60px" name ='pointsAssigned[]' placeholder="Pts" maxlength="2" size="1">
 
@@ -118,16 +200,6 @@ include 'profSession.php';
 //Add Test questions to X Test aka Create Test
 
 	function createTest() {
-		//OLD WAY - JSON data
-		/*
-		$jsonData[0] = $_POST['examName'];
-      	$x = 1;
-      	
-      	foreach($_POST['questionList'] as $value){
-        	$jsonData[$x] = $value;
-	 		$x++;
-      	} 
-		*/
 
 		//-------------------Sending Questions --------------------------
 		$q_arr = array();

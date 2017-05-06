@@ -89,9 +89,9 @@ include 'studentSession.php';
 	$resultz = json_decode($result, 1);	//json decode
 
 	//display resultz - json array
-	//print('<pre>');
-	//print_r ($resultz);
-	//print('</pre>');
+	print('<pre>');
+	print_r ($result);
+	print('</pre>');
 	
 
 ?>

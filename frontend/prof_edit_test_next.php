@@ -22,7 +22,9 @@ include 'profSession.php';
   $exam = $_GET['exam'];  //$exam = 'someTest'; 
   $_SESSION['examName'] = $_GET['exam']; 
   
-  $examData = array('exam'=>$exam);  //$questions = array("one", "two", "three");
+  $examData = array(
+              'exam'=>$exam
+              );  //$questions = array("one", "two", "three");
 
   //$url = "https://web.njit.edu/~or32/xr/receiveonetest.php";
   $url = "http://afsaccess2.njit.edu/~or32/xr/receiveonetest.php";
@@ -33,8 +35,17 @@ include 'profSession.php';
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $questions = curl_exec($ch);
         curl_close($ch);
+
+        $resultz = json_decode($questions, 1); //json decode
+         
+         //display  questions for specific test- json array
+        /*
+        print('<pre>');
+        print_r ($resultz);
+        print('</pre>');
+        */      
   ?>
-  
+    
 
   <?php
   
@@ -100,7 +111,11 @@ include 'profSession.php';
   <li style="float:right"><a href="logout.php">LogOut</a></li>
 </ul>
 </head>
-
+<?php
+    $diffArr=array();  //difficulty array
+    $catArr=array();  //difficulty array
+    
+?>    
 <body>
 
 <center>
@@ -122,13 +137,50 @@ include 'profSession.php';
           $i=1;
           $studentAnsArr = array(); //testing
          foreach(json_decode($questions) as $question){
-           echo "<h2>Question $i</h2>";
-           echo "<h4>$question</h4>"; 
-
-           $i = $i + 1;
                  
       ?>
-    
+      <?php
+
+  //GET all current test's question INFO
+
+    $questionData = array(
+                   'question'=>$question
+                    );  
+
+     $url = "http://afsaccess2.njit.edu/~or32/xr/gettaskinfo.php";
+     $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $questionData);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $questions = curl_exec($ch);
+    curl_close($ch);
+
+    $qResultz = json_decode($questions, 1); //json decode
+     
+    //display  questions info
+    /*
+    print('<pre>');
+    print_r ($qResultz);
+    print('</pre>');
+
+    echo ($qResultz["difficulty"]);
+    echo ($qResultz["category"]);
+    */
+
+    array_push($diffArr, $qResultz["difficulty"]);
+    array_push($catArr, $qResultz["category"]);
+
+               
+  ?>
+
+  <?php //display questions
+    echo "<h2>Question $i</h2>";
+    echo "<h4>$question</h4>"; 
+    echo ($qResultz["difficulty"]);
+    echo ($qResultz["category"]);
+
+    $i = $i + 1;
+  ?>
         <textarea id="studentAnsInput" class ="input" placeholder="Enter your answer here" rows="7" cols="60"  name="studentAnsInput['<?php echo $question; ?>']"></textarea>
           
 			<br>
@@ -146,7 +198,29 @@ include 'profSession.php';
 
    </center>  
 
+<?php
+/*testing arrays 
+  foreach ($diffArr as $d) { //difficulty array works good 0=easy, 1=medium, 2=hard
+    echo $d;
+    if ($d==0){
+      echo " is easy";
+      echo "<br>";
+    }elseif($d==1){
+      echo " is medium";
+      echo "<br>";
+    }else{
+      echo " is hard";
+      echo "<br";
+    }
+}
 
+  foreach ($catArr as $c){
+    echo $c;
+    echo "<br>";
+  }
+
+  */
+?>
 
 
    </body>

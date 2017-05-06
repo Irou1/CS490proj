@@ -255,3 +255,12 @@ div.col {
     width: 25%;
 }
 
+
+textarea {
+    overflow-y: scroll;
+    height: 100px;
+    resize: none;
+    font-family: Tahoma, sans-serif;
+    background-color: black;
+    color: white;
+}
