@@ -1,266 +1,283 @@
-body{
-	  padding: 0px;
-	  margin: 0px;
-	  background-image: url('aw.jpg');
-	  background-repeat: no-repeat;
-    background-attachment: fixed;
-
+body {
+   padding: 0px;
+   margin: 0px;
+   background-image: url('aw.jpg');
+   background-repeat: no-repeat;
+   background-attachment: fixed;
 }
+
+
 h1 {
-  font-size: 2em;
-  font-family: "Verdana";
-  font-weight: normal;
-  color: white;
- 
+   font-size: 2em;
+   font-family: "Verdana";
+   font-weight: normal;
+   color: white;
 }
 
 h2 {
-  font-family: "Verdana";
-  font-weight: normal;
-  color: white;
- 
+   font-family: "Verdana";
+   font-weight: normal;
+   color: white;
 }
 
 h3 {
-  font-family: "Verdana";
-  font-weight: normal;
-  color: white;
- 
+   font-family: "Verdana";
+   font-weight: normal;
+   color: white;
 }
 
 h4 {
-  font-family: "Verdana";
-  font-weight: normal;
-  color: white;
- 
+   font-family: "Verdana";
+   font-weight: normal;
+   color: white;
 }
 
 h5 {
-  font-family: "Verdana";
-  font-weight: normal;
-  color: white;
- 
+   font-family: "Verdana";
+   font-weight: normal;
+   color: white; 
 }
 
 /* testing div */
 .parent {
-    background-color: gold;
-    height: 400px;
-    position: relative;
+   background-color: gold;
+   height: 400px;
+   position: relative;
 }
 
 .child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+ 
+   padding: .8em 1.2em;
+   color: white;
+   background-color: #4286f4;
     
-    padding: .8em 1.2em;
-    color: white;
-    background-color: #4286f4;
-    
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+   -webkit-transform: translate(-50%, -50%);
+   -moz-transform: translate(-50%, -50%);
+   -ms-transform: translate(-50%, -50%);
+   -o-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
 }
 
 button:hover {
-    opacity: 0.8;
-    cursor: pointer;
+   opacity: 0.8;
+   cursor: pointer;
 }
 
 .btn-hover:hover {
-    opacity: 0.8;
-    cursor: pointer;
+   opacity: 0.8;
+   cursor: pointer;
 }
 
 .btn {
-  overflow: hidden;
-  margin: 3px 0;
-  padding: 6px 20px;
-  font-size: 15px;
-  line-height: 20px;
-  height: 34px;
-  background-color: rgba(0, 0, 0, 0.15);
-  color: #00aeff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 rgba(0, 0, 0, 0);
-
+   overflow: hidden;
+   margin: 3px 0;
+   padding: 6px 20px;
+   font-size: 15px;
+   line-height: 20px;
+   height: 34px;
+   background-color: rgba(0, 0, 0, 0.15);
+   color: #00aeff;
+   border: 1px solid rgba(255, 255, 255, 0.15);
+   box-shadow: 0 0 rgba(0, 0, 0, 0);
 }
 
 .btn-primary {
-  background-color: #098cc8;
-  color: #ffffff;
-  border: 1px solid transparent;
-  box-shadow: 0 0 rgba(0, 0, 0, 0);
-  border-radius: 2px;
-  border: 0;
+   background-color: #098cc8;
+   color: #ffffff;
+   border: 1px solid transparent;
+   box-shadow: 0 0 rgba(0, 0, 0, 0);
+   border-radius: 2px;
+   border: 0;
 }
 
 .btn-red-primary {
-  background-color: #e60000;
-  color: #ffffff;
-  border: 1px solid transparent;
-  box-shadow: 0 0 rgba(0, 0, 0, 0);
-  border-radius: 2px;
-  border: 0;
+   background-color: #e60000;
+   color: #ffffff;
+   border: 1px solid transparent;
+   box-shadow: 0 0 rgba(0, 0, 0, 0);
+   border-radius: 2px;
+   border: 0;
 }
 
 .btn-green-primary {
-  background-color: #00cc00;
-  color: #ffffff;
-  border: 1px solid transparent;
-  box-shadow: 0 0 rgba(0, 0, 0, 0);
-  border-radius: 2px;
-  border: 0;
+   background-color: #00cc00;
+   color: #ffffff;
+   border: 1px solid transparent;
+   box-shadow: 0 0 rgba(0, 0, 0, 0);
+   border-radius: 2px;
+   border: 0;
 }
+
 .btn-orange-primary {
-  background-color: #ff6600;
-  color: #ffffff;
-  border: 1px solid transparent;
-  box-shadow: 0 0 rgba(0, 0, 0, 0);
-  border-radius: 2px;
-  border: 0;
+   background-color: #ff6600;
+   color: #ffffff;
+   border: 1px solid transparent;
+   box-shadow: 0 0 rgba(0, 0, 0, 0);
+   border-radius: 2px;
+   border: 0;
 }
 
 .header{
-	background-color: #003380;
-	color: white;
-	text-align: center;
-	top:0px;
-	width:100%;
-	padding: 5px;
+   background-color: #003380;
+   color: white;
+   text-align: center;
+   top:0px;
+   width:100%;
+   padding: 5px;
 }
 
 .loginForm {
-  margin-top:180px; 
-  width: 40%;
-  padding: 30px;
-  margin: 5x auto;
-
+   margin-top:180px; 
+   width: 40%;
+   padding: 30px;
+   margin: 5px auto;
 }
 
 .textLoginInput{
-  margin-top: 2px;
-  height: 28px;
-  border: 2px solid #5E6E66;
-  font-size: 16px;
-  padding: 1px;
-  width: 100%;
+   margin-top: 2px;
+   height: 28px;
+   border: 2px solid #5E6E66;
+   font-size: 16px;
+   padding: 1px;
+   width: 100%;
 }
 
 .sizeForm{
-	padding: 30px;
-	margin: 5x auto;
+   padding: 30px;
+   margin: 5x auto;
 }
 
 .textInput{
-	margin-top: 2px;
-	/* height: 100px;
-  width: 50%; */
-	border: 2px solid #5E6E66;
-	font-size: 16px;
-	padding: 1px;
+   margin-top: 2px;
+   /* height: 100px;
+   width: 50%; */
+   border: 2px solid #5E6E66;
+   font-size: 16px;
+   padding: 1px;
 }
+
 .input{
-	margin-top: 2px;
-	border: 2px solid #5E6E66;
-	font-size: 16px;
-	padding: 1px;
-	resize: none;
+   margin-top: 2px;
+   border: 2px solid #5E6E66;
+   font-size: 16px;
+   padding: 1px;
+   resize: none;
 }
+
 td {
-	text-align: right;
+   text-align: right;
 }
+
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #003380;
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   background-color: #003380;
 }
 
 li {
-    float: left;
-    border-right:1px solid #bbb;
+   float: left;
+   border-right:1px solid #bbb;
 }
 
 li:last-child {
-    border-right: none;
+   border-right: none;
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+   background-color: #111;
 }
 
 .active {
     background-color: #001f4d;
 }
+
 #red_msg{
-  width: 50%;  
-  margin: 5px auto; 
-  height: 30px; 
-  border: 1px solid #003380; 
-  background: #e60000; 
-  color: #FFFFFF;
-  text-align: center;
-  padding-top: 10px;
+   width: 50%;  
+   margin: 5px auto; 
+   height: 30px; 
+   border: 1px solid #003380; 
+   background: #e60000; 
+   color: #FFFFFF;
+   text-align: center;
+   padding-top: 10px;
 }
 
 #blue_msg{
-  width: 50%;  
-  margin: 5px auto; 
-  height: 30px; 
-  border: 1px solid #003380; 
-  background: #2386B4; 
-  color: #FFFFFF;
-  text-align: center;
-  padding-top: 10px;
+   width: 50%;  
+   margin: 5px auto; 
+   height: 30px; 
+   border: 1px solid #003380; 
+   background: #2386B4; 
+   color: #FFFFFF;
+   text-align: center;
+   padding-top: 10px;
 }
 
 .dividerA{
-    width:5px;
-    height:auto;
-    display:inline-block;
+   width:5px;
+   height:auto;
+   display:inline-block;
 }
 
 .dividerB{
-    width:8px;
-    height:auto;
-    display:inline-block;
+   width:8px;
+   height:auto;
+   display:inline-block;
 }
 
 div.master {
-    height: 200px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: none;
-    margin-bottom: none;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+   height: 200px;
+   width: 80%;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: none;
+   margin-bottom: none;
+   border-bottom-left-radius: 15px;
+   border-bottom-right-radius: 15px;
 }
 
 div.col {
-    float: left;
-    width: 27%;
+   float: left;
+   width: 25%;
 }
 
+#left {
+   float: left;
+   width: 50%;
+   text-align: center;
+}
 
-textarea {
-    overflow-y: scroll;
-    height: 100px;
-    resize: none;
-    font-family: Tahoma, sans-serif;
-    background-color: black;
-    color: white;
+#right {
+   float: right;
+   width: 50%;
+   text-align: center;
+}
+
+#selected {
+   background: white;
+   min-height: 200px;
+   border: 2px solid #000;
+   margin-left: 10px;
+   margin-right: 10px;
+}
+
+#list {
+   background: white;
+   min-height: 200px;
+   border: 2px solid #000;
+   margin-left: 10px;
+   margin-right: 10px;
 }
