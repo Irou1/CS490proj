@@ -15,8 +15,6 @@ session_start();
 include 'profSession.php';
  ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
