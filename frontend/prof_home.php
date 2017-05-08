@@ -54,7 +54,6 @@ include 'profSession.php';
 	<input type="button" value="Publish Scores" class="btn btn-hover btn-block btn-green-primary" onclick="window.location.href='prof_post_results.php'" />
 </form>
 
-
 <?php
   function burnFunction() {
     //echo 'Run php function!';
