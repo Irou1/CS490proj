@@ -1,6 +1,3 @@
-
-
-
 <!--
 Kenneth Aparicio 
 Front End

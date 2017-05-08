@@ -90,11 +90,6 @@ include 'profSession.php';
   }
 ?>
 <br><br>
-<!--
-<button class="btn btn-block btn-red-primary" onclick="window.location.href='prof_home.php?BURN=true'" />Delete Test</button>
- Burn function above -->
-
-
 
 </center>
 </body>

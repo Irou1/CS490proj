@@ -3,7 +3,7 @@ Kenneth Aparicio
 Front End
 CS490
 
-Student -> Home -> [View Old Test + Feed Back] 
+Prof -> Home -> Post Results -> Prof Get Student Test -> Prof get student Test page -> [Prof Publish Test Score]
  -->
 
  <?php
@@ -12,15 +12,46 @@ include 'showerrors.php';
  
 //start session
 session_start();
-include 'studentSession.php';
+include 'profSession.php';
  ?>
-      <?php
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>CS490 Prof Publish Student Test Score Redirecting</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+<ul>
+  <li><a class="active" href="prof_home.php">Home</a></li>
+  <li style="float:right"><a href="logout.php">LogOut</a></li>
+</ul>	
+
+
+
+<center>
+<h1>Welcome <?php echo ucfirst($_SESSION['p_ucid']) ?> </h1>
+<h1>Thank You for grading <?php echo ucfirst($_SESSION['studentName']) ?> </h1>
+</center>
+
+<?php
+
+   $selectedStudentTest = $_POST['testNameList'][0];
+   $_SESSION['studentOldExam'] = $selectedStudentTest;
+
+    echo "yooo";
+    echo $_SESSION['studentOldExam'];
+   //echo $selectedStudentTest;
+   //echo "<br>";
+?>
+
+    <?php
 
       //GET all current test's questions
      
         $examData = array(
-            'student' => $_SESSION['s_ucid'],
-            'exam' => $_SESSION['myOldTest']
+            'student' => $_SESSION['studentName'],
+            'exam' => $selectedStudentTest
               );
 
       //$url = "https://web.njit.edu/~or32/xr/receiveonetest.php";
@@ -43,8 +74,8 @@ include 'studentSession.php';
       //GET all student ANSWERS
      
         $examData = array(
-            'student' => $_SESSION['s_ucid'],
-            'exam' => $_SESSION['myOldTest']
+            'student' => $_SESSION['studentName'],
+            'exam' => $selectedStudentTest
               );
 
       //$url = "https://web.njit.edu/~or32/xr/receiveonetest.php";
@@ -69,14 +100,6 @@ include 'studentSession.php';
           print_r ($answer);
           print('</pre>');
 
- 
-
-
-
-        
-        
-           
-            
       ?>
 
 
@@ -87,8 +110,8 @@ include 'studentSession.php';
   //JSON data
   $jsonData = array(
   //'flag' => 'login',
-  'studentName' => $_SESSION['s_ucid'],
-  'exam' => $_SESSION['myOldTest']
+  'studentName' => $_SESSION['studentName'],
+  'exam' => $selectedStudentTest
 
   );
   
@@ -141,7 +164,7 @@ include 'studentSession.php';
   <?php
   //GET all current test's ---> QUESTION POINTS from Test
   
-  $examData = array('exam'=>$_SESSION['myOldTest']); 
+  $examData = array('exam'=>$selectedStudentTest); 
 
   $url = "http://afsaccess2.njit.edu/~or32/xr/getexampoints.php";
   
@@ -167,8 +190,8 @@ include 'studentSession.php';
   //GET STUDENT current test's question's ---> POINTS EARNED
   
   $myData = array(
-  'student' => $_SESSION['s_ucid'],
-  'exam' => $_SESSION['myOldTest']
+  'student' => $_SESSION['studentName'],
+  'exam' => $selectedStudentTest
   );
 
   $url = "http://afsaccess2.njit.edu/~or32/xr/getpointsearned.php";
@@ -199,47 +222,25 @@ include 'studentSession.php';
 
   ?>
 
+<?php //testing this-------------------------------------------------------------------check ?>
+<center>
+  <font color="white" size="6" face="verdana">Editing <?php echo ucfirst($_SESSION['studentName']) ?>'s Test </font><br>
+  <font color="white" size="6" face="verdana"> Viewing Graded Exam: <?php echo ucfirst($selectedStudentTest) ?> </font><br><br>
+  <font color="white" size="6" face="verdana"> Your Grade: <?php echo $myGrade ?> </font><br><br> 
 
-
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>CS490 Student See Test Grade</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="studentscript.js"></script>
-<ul>
-  <li><a class="active" href="student_home.php">Home</a></li>
-  <li style="float:right"><a href="logout.php">LogOut</a></li>
-</ul>
-</head>
-<body>
-  <center>
-	<font color="white" size="6" face="verdana">Welcome <?php echo ucfirst($_SESSION['s_ucid']) ?> </font><br>
-	<font color="white" size="6" face="verdana"> Viewing Graded Exam: <?php echo ucfirst($_SESSION['myOldTest']) ?> </font><br><br>
-  <!-- <font color="white" size="6" face="verdana"> Your Grade: <?php echo $myGrade ?> </font><br><br> -->
-
-    <?php
-      //echo "<font color='white' size='6' face='verdana'>Your Grade:";
-    if ($myGrade < 70){
-        echo "<font color='red' size='6' face='verdana'> Your Grade: $myGrade</font>" . "<br>" . "<br>";  
-    }else{
-      echo "<font color='green' size='6' face='verdana'> Your Grade: $myGrade </font>" . "<br>" . "<br>"; 
-    }
-  ?>
-	</center>
+</center>
 
 
 <div class ="master">
-
+  
   <div class="col">
+  
   <?php
   $i=1;
   //$t_questions = array ("q1", "q2");
 
   //echo "Test Questions are: " . $t_questions[0] . " " . $t_questions[1] . " " . $t_questions[2] . " " . $t_questions[3] ;
-
+  
   foreach ($t_questions as $tq){
     echo "<font color='white' size='3' face='verdana'>Question $i</font>" . "<br>";
     //echo $tq . "<br>";
@@ -257,6 +258,7 @@ include 'studentSession.php';
   </diV>
 
   <div class="col">
+  
   <?php
   $sAns = array("answer1", "answer2");
   foreach ($answer as $sa) {
@@ -276,8 +278,7 @@ include 'studentSession.php';
   <?php
   $feedbackString = ""; //initliaze feedbackString
   $temp = "";
-   $points = array("2", "35");
-   $totalPoints = array("35", "50");
+
    $x=0;
   //$feedbackStuff = array("good", "bad", "ehh", "lol"); //testing
 
@@ -289,17 +290,24 @@ include 'studentSession.php';
           //$feedbackString = implode("\n", $innerArray);
         } 
       }
-
+  ?>
 
    
+  
+  <form method="post" action="">  
+     <?php
+    
     echo "<font color='white' size='3' face='verdana'>Feedback ";
-    echo "<font color='white' size='3' face='verdana'>&";
-    if ($ptsEarned[$x] < $qPoints[$x] * 0.7){
-        echo "<font color='red' size='3' face='verdana'> Points Earned: $ptsEarned[$x]/$qPoints[$x] </font>" . "<br>";  
-    }else{
-      echo "<font color='green' size='3' face='verdana'> Points Earned: $ptsEarned[$x]/$qPoints[$x] </font>" . "<br>"; 
-    }
-  ?>
+
+    echo "<font color='white' size='3' face='verdana'>& Earned";
+    // echo "<font color='red' size='3' face='verdana'> Points Earned: $ptsEarned[$x]/$qPoints[$x] </font>" . "<br>";  
+    ?>
+    <input type="number" min="0" name="newPoints[]" class="p" style="width: 60px" value="<?php echo $ptsEarned[$x]; ?>" maxlength="2" size="1">/<?php echo $qPoints[$x]; ?>
+    <!-- <input type="number" min="0" class="p" style="width: 60px" value="<?php echo $qPoints[$x]; ?>" maxlength="2" size="1"> -->
+
+    
+
+
   <textarea type="text" readonly class="f" rows="7" cols="41" style="resize:none;" ><?php echo $feedbackString; ?></textarea>
   <br>
   <br>
@@ -309,10 +317,68 @@ include 'studentSession.php';
   $x = $x + 1;
   } // for each FEEDBACK- ending curly brace
   ?>
+  <center>
+      <button type="submit" name="regradeButton" class="btn btn-block btn-primary" >Save Changes</button>
+  </center>
+  </form>
+
   </div>
 </div>
 
-
-
 </body>
+<?php 
+$newPts="";
+if (isset($_POST['regradeButton'])) {
+    reGrade();
+
+    header('Location: http://afsaccess2.njit.edu/~ka279/cs490/final/prof_home.php');      
+}
+
+function reGrade() {
+
+
+    foreach ($newPoints as $np){
+        $newPts = $newPts . $np . ',';
+    } 
+    $newPts = trim($newPts, ',');
+    //echo $newPts; 
+
+
+  //JSON data
+  $jsonData = array(
+  'student' => $_SESSION['studentName'],
+  'exam' => $_SESSION['studentOldExam'],
+  'points' => $newPts
+  );
+  
+  //MID URL
+
+  $url = "http://afsaccess2.njit.edu/~or32/xr/setpointsearned.php";
+
+  //initiate cURL
+  $ch = curl_init($url);
+  
+  //Tell cURL that we want to send a POST request
+  curl_setopt($ch, CURLOPT_POST, true);
+  
+  //Attach our encoded JSON string to the POST fields
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+  
+  //returns $url stuff
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  
+   //Execute the request
+  $result = curl_exec($ch);
+  
+  //close cURL 
+  curl_close($ch);
+  
+  //echo gettype ( $result );   //get var type 
+
+  //$resultz = json_decode($result, 1); //json decode
+
+}
+
+?>  
+
 </html>

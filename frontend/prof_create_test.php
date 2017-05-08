@@ -38,15 +38,19 @@
       </center>
 
       <div id="left">
-        <h1>Questions Added</h1>
+      <br><br>
+        <font color="white" size="6" face="verdana">Questions Added for new Test</font></br>
+        
 	<form method="post" action="prof_create_test.php" >
+    <br>
 	  <input type="text" name="examName" placeholder="Enter a new Test Name" class="textInput" required>
-	  <br><br>
+    <br><br>
+	  
 	  <div id="selected">
 	    <!-- selected questions appear here-->
 	  </div>
           <br>
-	  <input type="submit" name="create_test" value="Submit Test">
+	  <input type="submit" name="create_test" value="Create Test" class="btn btn-block btn-primary">
         </form>
 	<?php
            function createTest(){  
@@ -65,6 +69,12 @@
                  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                  $result = curl_exec($ch);
                  curl_close($ch);
+
+				//display resultz - json array
+					print('<pre>');
+					print_r ($result);
+					print('</pre>');
+	
 	      }
 	   }
            
@@ -72,7 +82,9 @@
       </div>
 
       <div id="right">
-        <h1>Select Questions</h1>
+        <!-- <h1>Select Questions</h1> -->
+        <br><br>
+        <font color="white" size="6" face="verdana">Select Questions from Question Bank</font></br>
 
           <?php	
 
@@ -86,17 +98,17 @@
 
           ?>	
 
-	  <font color="white" size="3" face="verdana">Category:</font>
+	  <br>
 	  <form>
-            <select name="myCategory" onchange="filterQuestions(this.value)">
-              <option value="">Filter</option>
-	      <option value="all">All</option>
-              <!-- <option value="array">Arrays</option> -->
-              <option value="loop">Loops</option>
-              <option value="method">Methods</option>
-              <option value="relational">Relational</option>
-              <option value="recursive">Recursive</option>		
-            </select>
+     <font color="white" size="3" face="verdana">Category:</font>
+		<select name="myCategory" onchange="filterQuestions(this.value)">
+		  <option value="">Filter</option>
+		  <option value="all">All</option>
+		  <option value="loop">Loops</option>
+		  <option value="method">Methods</option>
+		  <option value="relational">Relational</option>
+		  <option value="recursive">Recursive</option>		
+		</select>
 	    <br>
 	  </form>
           <!--	

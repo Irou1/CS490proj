@@ -21,7 +21,6 @@ function filterQuestions(str){
       xmlhttp.open("GET","filteredQuestions.php?q="+str, true);
       xmlhttp.send();
    }
-
 }
 
 function selectedQuestions(questionList){
@@ -31,7 +30,7 @@ function selectedQuestions(questionList){
          var current = document.getElementById('selected');
          var input = document.createElement("div");
          //input.id = 'tests'; 
-         input.innerHTML = "<input type='checkbox' name='submitList[]' value='"+questionList[x].value+"'>"+questionList[x].value+" <br><input type='number' min='1' style='width: 60px' name='pointsAssigned[]' placeholder='Pts' maxlength='2' size='1'><br>";
+         input.innerHTML = "<input type='checkbox' checked name='submitList[]' value='"+questionList[x].value+"'>"+questionList[x].value+" <br><input type='number' min='1' style='width: 60px' name='pointsAssigned[]' placeholder='Pts' min='1' required maxlength='2' size='1'><br>";
          current.appendChild(input);
       }
    }

@@ -87,11 +87,20 @@ include 'profSession.php';
   } 
   </script>
 
+  <?php //-------------------------------Testing------two submit-----------------------------------?>
+  <script type="text/javascript">
+    function submitForm(action)
+    {
+        document.getElementById('examStuff').action = action;
+        document.getElementById('examStuff').submit();
+    }
+ </script>
+
   <center>
 
   <br>
 
-  <?php //-------------------------------Testing-----------------------------------------?>
+
 
   <div id="wrapper">
 
@@ -101,7 +110,8 @@ include 'profSession.php';
 
     <div id="studentTestDivSpace" style="display:none;">
     
-    <form method="post" action="prof_post_results_next3a_publish_test_score.php"> 
+    <!--<form method="post" id="examStuff" action="prof_post_results_next3a_publish_test_score.php"> -->
+    <form method="post" id="examStuff" action=""> 
         <!-- <h3>List of Tests which <?php echo $student ?> took</h3> -->
        
     <?php
@@ -119,8 +129,10 @@ include 'profSession.php';
           }
         
         ?>
-       <input type="submit" class="btn btn-hover btn-block btn-orange-primary" name="selectedStudentTest" value="Publish Student Test">
-        <br>
+       <input type="submit" class="btn btn-hover btn-block btn-orange-primary" onclick="submitForm('prof_post_results_next3a_publish_test_score.php')" name="selectedStudentTest" value="Publish Student Test">
+       <br>
+       <input type="submit" class="btn btn-hover btn-block btn-green-primary" onclick="submitForm('prof_post_results_next3b_edit_test_score.php')"  name="selectedStudentTest" value="Edit Student Test Score">
+       <br>
 
         <?php
       }
