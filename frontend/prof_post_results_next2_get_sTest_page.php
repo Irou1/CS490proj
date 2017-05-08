@@ -45,7 +45,8 @@ include 'profSession.php';
     //'flag' => 'login',
     'studentName' => $_POST['sn']
     );
-    
+
+
     //MID URL
     //$url = "https://web.njit.edu/~or32/xr/receivetakentests.php";
     //$url = "https://web.njit.edu/~em244/CS490/getTakenTests.php"; //works with eddies

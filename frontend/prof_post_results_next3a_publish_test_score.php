@@ -56,8 +56,7 @@ include 'profSession.php';
 
   //print_r($jsonData);     //Testing - printing all jsonData****
     //echo "<br>";
-  
-  
+
   //MID URL
   //$url = "https://web.njit.edu/~or32/xr/changeviewflag.php";
   //$url = "https://web.njit.edu/~em244/CS490/changeExamStatus.php";

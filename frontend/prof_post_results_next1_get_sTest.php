@@ -30,7 +30,6 @@ include 'profSession.php';
    //redirect to test page
    $selectedStudent = $_POST['studentList'][0];
 
-  
    if($selectedStudent){ 
       //header("Location: https://web.njit.edu/~ka279/cs490/final/prof_post_results_next2_get_sTest_page.php?student=$selectedStudent");
       header("Location: http://afsaccess2.njit.edu/~ka279/cs490/final/prof_post_results_next2_get_sTest_page.php?student=$selectedStudent");
